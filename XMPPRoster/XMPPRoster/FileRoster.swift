@@ -10,7 +10,7 @@ import Foundation
 import XMPPFoundation
 import SQLite
 
-public class FileRoster: Roster {
+public class FileRoster: VersionedRoster {
     
     public let directory: URL
     public let account: JID
@@ -77,6 +77,7 @@ public class FileRoster: Roster {
         }
     }
     
+    public func add(_ item: Item) throws { try add(item, version: nil) }
     public func add(_ item: Item, version: String?) throws {
         try queue.sync {
             guard
@@ -121,6 +122,7 @@ public class FileRoster: Roster {
         }
     }
     
+    public func remove(_ item: Item) throws { try remove(item, version: nil) }
     public func remove(_ item: Item, version: String?) throws {
         try queue.sync {
             guard
@@ -150,6 +152,7 @@ public class FileRoster: Roster {
         }
     }
     
+    public func replace(with items: [Item]) throws { try replace(with: items, version: nil) }
     public func replace(with items: [Item], version: String?) throws {
         try queue.sync {
             guard

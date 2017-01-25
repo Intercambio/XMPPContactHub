@@ -38,13 +38,19 @@ public struct Item: Hashable, Equatable {
 }
 
 public protocol Roster {
+    func add(_ item: Item) throws -> Void
+    func remove(_ item: Item) throws -> Void
+    func replace(with items: [Item]) throws -> Void
+    
+    func all() throws -> [Item]
+}
+
+public protocol VersionedRoster: Roster {
     func add(_ item: Item, version: String?) throws -> Void
     func remove(_ item: Item, version: String?) throws -> Void
     func replace(with items: [Item], version: String?) throws -> Void
     
     var version: String? { get }
-    
-    func all() throws -> [Item]
 }
 
 extension Notification.Name {
