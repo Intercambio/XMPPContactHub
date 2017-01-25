@@ -53,6 +53,7 @@ class FileRosterTests: TestCase {
             let item = Item(account: JID("romeo@example.com")!,
                             counterpart: JID("juliet@example.com")!,
                             subscription: .both,
+                            pending: .none,
                             name: "Juliet",
                             groups: ["Friends", "Lovers"])
             try roster.add(item, version: nil)
@@ -83,16 +84,19 @@ class FileRosterTests: TestCase {
             let itemA = Item(account: JID("romeo@example.com")!,
                             counterpart: JID("a@example.com")!,
                             subscription: .both,
+                            pending: .none,
                             name: "A",
                             groups: ["Friends"])
             let itemB = Item(account: JID("romeo@example.com")!,
                              counterpart: JID("b@example.com")!,
                              subscription: .both,
+                             pending: .none,
                              name: "B",
                              groups: ["Friends"])
             let itemC = Item(account: JID("romeo@example.com")!,
                              counterpart: JID("b@example.com")!,
                              subscription: .both,
+                             pending: .none,
                              name: "B",
                              groups: ["Friends", "Lovers"])
             
@@ -118,6 +122,7 @@ class FileRosterTests: TestCase {
             let item = Item(account: JID("romeo@example.com")!,
                              counterpart: JID("a@example.com")!,
                              subscription: .both,
+                             pending: .none,
                              name: "A",
                              groups: ["Friends"])
             try roster.add(item, version: "1534761")

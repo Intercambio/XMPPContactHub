@@ -93,6 +93,7 @@ public class FileRoster: VersionedRoster {
                     FileRosterSchema.item.insert(or: .replace,
                                                  FileRosterSchema.item_jid <- item.counterpart,
                                                  FileRosterSchema.item_subscription <- item.subscription,
+                                                 FileRosterSchema.item_pending <- item.pending,
                                                  FileRosterSchema.item_name <- item.name
                 ))
                 _ = try db.run(
@@ -176,6 +177,7 @@ public class FileRoster: VersionedRoster {
                         FileRosterSchema.item.insert(or: .replace,
                                                      FileRosterSchema.item_jid <- item.counterpart,
                                                      FileRosterSchema.item_subscription <- item.subscription,
+                                                     FileRosterSchema.item_pending <- item.pending,
                                                      FileRosterSchema.item_name <- item.name
                     ))
                     for name in item.groups {
@@ -227,17 +229,20 @@ public class FileRoster: VersionedRoster {
                 let itemQuery = FileRosterSchema.item.select(
                     FileRosterSchema.item_jid,
                     FileRosterSchema.item_subscription,
+                    FileRosterSchema.item_pending,
                     FileRosterSchema.item_name
                 )
                 
                 for row in try db.prepare(itemQuery) {
                     let counterpart = row.get(FileRosterSchema.item_jid)
                     let subscription = row.get(FileRosterSchema.item_subscription)
+                    let pending = row.get(FileRosterSchema.item_pending)
                     let name = row.get(FileRosterSchema.item_name)
                     let groups = groupsByCounterpart[counterpart] ?? []
                     let item = Item(account: self.account,
                                     counterpart: counterpart,
                                     subscription: subscription,
+                                    pending: pending,
                                     name: name,
                                     groups: groups)
                     items.append(item)
@@ -260,6 +265,7 @@ class FileRosterSchema {
     static let item = Table("item")
     static let item_jid = Expression<JID>("jid")
     static let item_subscription = Expression<Subscription>("subscription")
+    static let item_pending = Expression<Pending>("pending")
     static let item_name = Expression<String?>("name")
     static let group = Table("group")
     static let group_jid = Expression<JID>("jid")
@@ -310,6 +316,7 @@ class FileRosterSchema {
         try db.run(FileRosterSchema.item.create { t in
             t.column(FileRosterSchema.item_jid, primaryKey: true)
             t.column(FileRosterSchema.item_subscription)
+            t.column(FileRosterSchema.item_pending)
             t.column(FileRosterSchema.item_name)
         })
         try db.run(FileRosterSchema.group.create { t in
@@ -360,6 +367,18 @@ extension Subscription: Value {
     }
     public static func fromDatatypeValue(_ datatypeValue: String) -> Subscription {
         return Subscription(rawValue: datatypeValue)!
+    }
+    public var datatypeValue: String {
+        return self.rawValue
+    }
+}
+
+extension Pending: Value {
+    public static var declaredDatatype: String {
+        return String.declaredDatatype
+    }
+    public static func fromDatatypeValue(_ datatypeValue: String) -> Pending {
+        return Pending(rawValue: datatypeValue)!
     }
     public var datatypeValue: String {
         return self.rawValue

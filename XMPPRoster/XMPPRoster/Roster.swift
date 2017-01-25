@@ -23,10 +23,17 @@ public enum Subscription: String {
     case both = "both"
 }
 
+public enum Pending: String {
+    case none = "none"
+    case local = "locale"
+    case remove = "remote"
+}
+
 public struct Item: Hashable, Equatable {
     public let account: JID
     public let counterpart: JID
     public let subscription: Subscription
+    public let pending: Pending
     public let name: String?
     public let groups: [String]
     public var hashValue: Int {
