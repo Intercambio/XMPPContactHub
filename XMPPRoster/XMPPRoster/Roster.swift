@@ -9,23 +9,40 @@
 import Foundation
 import XMPPFoundation
 
-public enum Subscription {
-    case none
-    case to
-    case from
-    case both
+public enum RosterError: Error {
+    case notSetup
+    case invalidItem
+    case doesNotExist
+    case duplicateItem
 }
 
-public struct Item {
-    let account: JID
-    let counterpart: JID
-    let subscription: Subscription
-    let name: String?
-    let groups: [String]
+public enum Subscription: String {
+    case none = "none"
+    case to = "to"
+    case from = "from"
+    case both = "both"
+}
+
+public struct Item: Hashable, Equatable {
+    public let account: JID
+    public let counterpart: JID
+    public let subscription: Subscription
+    public let name: String?
+    public let groups: [String]
+    public var hashValue: Int {
+        return account.hash + counterpart.hash
+    }
+    public static func ==(lhs: Item, rhs: Item) -> Bool {
+        return rhs.account == lhs.account && rhs.counterpart == rhs.counterpart
+    }
 }
 
 public protocol Roster {
-    func items() -> [Item]
+    func add(_ item: Item) throws -> Void
+    func remove(_ item: Item) throws -> Void
+    func replace(with items: [Item]) throws -> Void
+    
+    func all() throws -> [Item]
 }
 
 extension Notification.Name {

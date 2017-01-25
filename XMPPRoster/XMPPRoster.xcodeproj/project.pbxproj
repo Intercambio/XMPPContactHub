@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F677BF251E39104B00BD488C /* XMPPRoster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF1B1E39104B00BD488C /* XMPPRoster.framework */; };
-		F677BF2A1E39104B00BD488C /* XMPPRosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF291E39104B00BD488C /* XMPPRosterTests.swift */; };
 		F677BF2C1E39104B00BD488C /* XMPPRoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPRoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F677BF431E3910AA00BD488C /* XMPPRoster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */; };
 		F677BF511E39112000BD488C /* XMPPRoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPRoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F677BF521E39112200BD488C /* XMPPRosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF291E39104B00BD488C /* XMPPRosterTests.swift */; };
 		F677BF541E3911A600BD488C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF531E3911A600BD488C /* Roster.swift */; };
 		F677BF551E3911A700BD488C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF531E3911A600BD488C /* Roster.swift */; };
 		F677BF5A1E39149000BD488C /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF581E39149000BD488C /* PureXML.framework */; };
@@ -25,8 +23,17 @@
 		F677BF651E3914E700BD488C /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF591E39149000BD488C /* XMPPFoundation.framework */; };
 		F677BF681E39151800BD488C /* PureXML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F677BF5D1E3914B300BD488C /* PureXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F677BF691E39151800BD488C /* XMPPFoundation.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F677BF6B1E3915E600BD488C /* RosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF6A1E3915E600BD488C /* RosterManager.swift */; };
-		F677BF6C1E3915E600BD488C /* RosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF6A1E3915E600BD488C /* RosterManager.swift */; };
+		F677BF6E1E392D2A00BD488C /* FileRoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF6D1E392D2A00BD488C /* FileRoster.swift */; };
+		F677BF6F1E392D2A00BD488C /* FileRoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF6D1E392D2A00BD488C /* FileRoster.swift */; };
+		F677BF711E392EF100BD488C /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF701E392EF100BD488C /* TestCase.swift */; };
+		F677BF721E392EF100BD488C /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF701E392EF100BD488C /* TestCase.swift */; };
+		F677BF761E392F4A00BD488C /* FileRosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF751E392F4A00BD488C /* FileRosterTests.swift */; };
+		F677BF771E392F4A00BD488C /* FileRosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF751E392F4A00BD488C /* FileRosterTests.swift */; };
+		F677BF791E39325000BD488C /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF781E39325000BD488C /* SQLite.framework */; };
+		F677BF7A1E39325F00BD488C /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF781E39325000BD488C /* SQLite.framework */; };
+		F677BF7C1E39326D00BD488C /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF7B1E39326D00BD488C /* SQLite.framework */; };
+		F677BF7D1E39327400BD488C /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF7B1E39326D00BD488C /* SQLite.framework */; };
+		F677BF7E1E39327700BD488C /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F677BF7B1E39326D00BD488C /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F677BF7E1E39327700BD488C /* SQLite.framework in CopyFiles */,
 				F677BF681E39151800BD488C /* PureXML.framework in CopyFiles */,
 				F677BF691E39151800BD488C /* XMPPFoundation.framework in CopyFiles */,
 			);
@@ -65,7 +73,6 @@
 		F677BF1E1E39104B00BD488C /* XMPPRoster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMPPRoster.h; sourceTree = "<group>"; };
 		F677BF1F1E39104B00BD488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F677BF241E39104B00BD488C /* XMPPRosterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPRosterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F677BF291E39104B00BD488C /* XMPPRosterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMPPRosterTests.swift; sourceTree = "<group>"; };
 		F677BF2B1E39104B00BD488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPRoster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F677BF421E3910AA00BD488C /* XMPPRosterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPRosterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +81,11 @@
 		F677BF591E39149000BD488C /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/iOS/XMPPFoundation.framework; sourceTree = "<group>"; };
 		F677BF5D1E3914B300BD488C /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/Mac/PureXML.framework; sourceTree = "<group>"; };
 		F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/Mac/XMPPFoundation.framework; sourceTree = "<group>"; };
-		F677BF6A1E3915E600BD488C /* RosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterManager.swift; sourceTree = "<group>"; };
+		F677BF6D1E392D2A00BD488C /* FileRoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRoster.swift; sourceTree = "<group>"; };
+		F677BF701E392EF100BD488C /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
+		F677BF751E392F4A00BD488C /* FileRosterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRosterTests.swift; sourceTree = "<group>"; };
+		F677BF781E39325000BD488C /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
+		F677BF7B1E39326D00BD488C /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/Mac/SQLite.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF791E39325000BD488C /* SQLite.framework in Frameworks */,
 				F677BF641E3914E700BD488C /* PureXML.framework in Frameworks */,
 				F677BF651E3914E700BD488C /* XMPPFoundation.framework in Frameworks */,
 			);
@@ -94,6 +106,7 @@
 				F677BF5A1E39149000BD488C /* PureXML.framework in Frameworks */,
 				F677BF5B1E39149000BD488C /* XMPPFoundation.framework in Frameworks */,
 				F677BF251E39104B00BD488C /* XMPPRoster.framework in Frameworks */,
+				F677BF7A1E39325F00BD488C /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF7C1E39326D00BD488C /* SQLite.framework in Frameworks */,
 				F677BF621E3914E200BD488C /* PureXML.framework in Frameworks */,
 				F677BF631E3914E200BD488C /* XMPPFoundation.framework in Frameworks */,
 			);
@@ -110,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF7D1E39327400BD488C /* SQLite.framework in Frameworks */,
 				F677BF5F1E3914B300BD488C /* PureXML.framework in Frameworks */,
 				F677BF601E3914B300BD488C /* XMPPFoundation.framework in Frameworks */,
 				F677BF431E3910AA00BD488C /* XMPPRoster.framework in Frameworks */,
@@ -144,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				F677BF531E3911A600BD488C /* Roster.swift */,
-				F677BF6A1E3915E600BD488C /* RosterManager.swift */,
+				F677BF6D1E392D2A00BD488C /* FileRoster.swift */,
 				F677BF561E39129200BD488C /* Supporting Files */,
 			);
 			path = XMPPRoster;
@@ -153,8 +168,9 @@
 		F677BF281E39104B00BD488C /* XMPPRosterTests */ = {
 			isa = PBXGroup;
 			children = (
-				F677BF291E39104B00BD488C /* XMPPRosterTests.swift */,
-				F677BF2B1E39104B00BD488C /* Info.plist */,
+				F677BF701E392EF100BD488C /* TestCase.swift */,
+				F677BF731E392F2A00BD488C /* File Roster */,
+				F677BF741E392F3500BD488C /* Supporting FIles */,
 			);
 			path = XMPPRosterTests;
 			sourceTree = "<group>";
@@ -180,6 +196,7 @@
 		F677BF5C1E3914A400BD488C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F677BF781E39325000BD488C /* SQLite.framework */,
 				F677BF581E39149000BD488C /* PureXML.framework */,
 				F677BF591E39149000BD488C /* XMPPFoundation.framework */,
 			);
@@ -189,10 +206,27 @@
 		F677BF611E3914B700BD488C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				F677BF7B1E39326D00BD488C /* SQLite.framework */,
 				F677BF5D1E3914B300BD488C /* PureXML.framework */,
 				F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */,
 			);
 			name = macOS;
+			sourceTree = "<group>";
+		};
+		F677BF731E392F2A00BD488C /* File Roster */ = {
+			isa = PBXGroup;
+			children = (
+				F677BF751E392F4A00BD488C /* FileRosterTests.swift */,
+			);
+			name = "File Roster";
+			sourceTree = "<group>";
+		};
+		F677BF741E392F3500BD488C /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				F677BF2B1E39104B00BD488C /* Info.plist */,
+			);
+			name = "Supporting FIles";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +259,6 @@
 				F677BF171E39104B00BD488C /* Frameworks */,
 				F677BF181E39104B00BD488C /* Headers */,
 				F677BF191E39104B00BD488C /* Resources */,
-				F677BF661E3914EF00BD488C /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -243,6 +276,7 @@
 				F677BF201E39104B00BD488C /* Sources */,
 				F677BF211E39104B00BD488C /* Frameworks */,
 				F677BF221E39104B00BD488C /* Resources */,
+				F677BF801E3932A500BD488C /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -377,14 +411,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F677BF661E3914EF00BD488C /* Carthage */ = {
+		F677BF801E3932A500BD488C /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/../Carthage/Build/iOS/PureXML.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMLFoundation.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -400,7 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F677BF6B1E3915E600BD488C /* RosterManager.swift in Sources */,
+				F677BF6E1E392D2A00BD488C /* FileRoster.swift in Sources */,
 				F677BF541E3911A600BD488C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +444,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F677BF2A1E39104B00BD488C /* XMPPRosterTests.swift in Sources */,
+				F677BF761E392F4A00BD488C /* FileRosterTests.swift in Sources */,
+				F677BF711E392EF100BD488C /* TestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F677BF6C1E3915E600BD488C /* RosterManager.swift in Sources */,
+				F677BF6F1E392D2A00BD488C /* FileRoster.swift in Sources */,
 				F677BF551E3911A700BD488C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,7 +462,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F677BF521E39112200BD488C /* XMPPRosterTests.swift in Sources */,
+				F677BF771E392F4A00BD488C /* FileRosterTests.swift in Sources */,
+				F677BF721E392EF100BD488C /* TestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
