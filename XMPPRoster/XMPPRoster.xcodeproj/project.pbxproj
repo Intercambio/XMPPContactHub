@@ -13,6 +13,20 @@
 		F677BF431E3910AA00BD488C /* XMPPRoster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */; };
 		F677BF511E39112000BD488C /* XMPPRoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPRoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F677BF521E39112200BD488C /* XMPPRosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF291E39104B00BD488C /* XMPPRosterTests.swift */; };
+		F677BF541E3911A600BD488C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF531E3911A600BD488C /* Roster.swift */; };
+		F677BF551E3911A700BD488C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF531E3911A600BD488C /* Roster.swift */; };
+		F677BF5A1E39149000BD488C /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF581E39149000BD488C /* PureXML.framework */; };
+		F677BF5B1E39149000BD488C /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF591E39149000BD488C /* XMPPFoundation.framework */; };
+		F677BF5F1E3914B300BD488C /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF5D1E3914B300BD488C /* PureXML.framework */; };
+		F677BF601E3914B300BD488C /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */; };
+		F677BF621E3914E200BD488C /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF5D1E3914B300BD488C /* PureXML.framework */; };
+		F677BF631E3914E200BD488C /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */; };
+		F677BF641E3914E700BD488C /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF581E39149000BD488C /* PureXML.framework */; };
+		F677BF651E3914E700BD488C /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF591E39149000BD488C /* XMPPFoundation.framework */; };
+		F677BF681E39151800BD488C /* PureXML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F677BF5D1E3914B300BD488C /* PureXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F677BF691E39151800BD488C /* XMPPFoundation.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F677BF6B1E3915E600BD488C /* RosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF6A1E3915E600BD488C /* RosterManager.swift */; };
+		F677BF6C1E3915E600BD488C /* RosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF6A1E3915E600BD488C /* RosterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +46,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F677BF671E39151100BD488C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F677BF681E39151800BD488C /* PureXML.framework in CopyFiles */,
+				F677BF691E39151800BD488C /* XMPPFoundation.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F677BF1B1E39104B00BD488C /* XMPPRoster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPRoster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F677BF1E1E39104B00BD488C /* XMPPRoster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMPPRoster.h; sourceTree = "<group>"; };
@@ -41,6 +69,12 @@
 		F677BF2B1E39104B00BD488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPRoster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F677BF421E3910AA00BD488C /* XMPPRosterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPRosterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F677BF531E3911A600BD488C /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
+		F677BF581E39149000BD488C /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
+		F677BF591E39149000BD488C /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/iOS/XMPPFoundation.framework; sourceTree = "<group>"; };
+		F677BF5D1E3914B300BD488C /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/Mac/PureXML.framework; sourceTree = "<group>"; };
+		F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/Mac/XMPPFoundation.framework; sourceTree = "<group>"; };
+		F677BF6A1E3915E600BD488C /* RosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF641E3914E700BD488C /* PureXML.framework in Frameworks */,
+				F677BF651E3914E700BD488C /* XMPPFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF5A1E39149000BD488C /* PureXML.framework in Frameworks */,
+				F677BF5B1E39149000BD488C /* XMPPFoundation.framework in Frameworks */,
 				F677BF251E39104B00BD488C /* XMPPRoster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF621E3914E200BD488C /* PureXML.framework in Frameworks */,
+				F677BF631E3914E200BD488C /* XMPPFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF5F1E3914B300BD488C /* PureXML.framework in Frameworks */,
+				F677BF601E3914B300BD488C /* XMPPFoundation.framework in Frameworks */,
 				F677BF431E3910AA00BD488C /* XMPPRoster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +125,7 @@
 				F677BF1D1E39104B00BD488C /* XMPPRoster */,
 				F677BF281E39104B00BD488C /* XMPPRosterTests */,
 				F677BF1C1E39104B00BD488C /* Products */,
+				F677BF571E39149000BD488C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,8 +143,9 @@
 		F677BF1D1E39104B00BD488C /* XMPPRoster */ = {
 			isa = PBXGroup;
 			children = (
-				F677BF1E1E39104B00BD488C /* XMPPRoster.h */,
-				F677BF1F1E39104B00BD488C /* Info.plist */,
+				F677BF531E3911A600BD488C /* Roster.swift */,
+				F677BF6A1E3915E600BD488C /* RosterManager.swift */,
+				F677BF561E39129200BD488C /* Supporting Files */,
 			);
 			path = XMPPRoster;
 			sourceTree = "<group>";
@@ -113,6 +157,42 @@
 				F677BF2B1E39104B00BD488C /* Info.plist */,
 			);
 			path = XMPPRosterTests;
+			sourceTree = "<group>";
+		};
+		F677BF561E39129200BD488C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F677BF1E1E39104B00BD488C /* XMPPRoster.h */,
+				F677BF1F1E39104B00BD488C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F677BF571E39149000BD488C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F677BF5C1E3914A400BD488C /* iOS */,
+				F677BF611E3914B700BD488C /* macOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F677BF5C1E3914A400BD488C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F677BF581E39149000BD488C /* PureXML.framework */,
+				F677BF591E39149000BD488C /* XMPPFoundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F677BF611E3914B700BD488C /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				F677BF5D1E3914B300BD488C /* PureXML.framework */,
+				F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */,
+			);
+			name = macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +225,7 @@
 				F677BF171E39104B00BD488C /* Frameworks */,
 				F677BF181E39104B00BD488C /* Headers */,
 				F677BF191E39104B00BD488C /* Resources */,
+				F677BF661E3914EF00BD488C /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -198,6 +279,7 @@
 				F677BF3E1E3910AA00BD488C /* Sources */,
 				F677BF3F1E3910AA00BD488C /* Frameworks */,
 				F677BF401E3910AA00BD488C /* Resources */,
+				F677BF671E39151100BD488C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -222,6 +304,7 @@
 					F677BF1A1E39104B00BD488C = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = EJW69VRSSH;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					F677BF231E39104B00BD488C = {
@@ -232,6 +315,7 @@
 					F677BF391E3910AA00BD488C = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = EJW69VRSSH;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					F677BF411E3910AA00BD488C = {
@@ -292,11 +376,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F677BF661E3914EF00BD488C /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/PureXML.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F677BF161E39104B00BD488C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF6B1E3915E600BD488C /* RosterManager.swift in Sources */,
+				F677BF541E3911A600BD488C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +417,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677BF6C1E3915E600BD488C /* RosterManager.swift in Sources */,
+				F677BF551E3911A700BD488C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,18 +550,21 @@
 		F677BF301E39104B00BD488C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS/";
 				INFOPLIST_FILE = XMPPRoster/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRoster;
 				PRODUCT_NAME = XMPPRoster;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -462,12 +572,14 @@
 		F677BF311E39104B00BD488C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS/";
 				INFOPLIST_FILE = XMPPRoster/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -481,7 +593,9 @@
 		F677BF331E39104B00BD488C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS/";
 				INFOPLIST_FILE = XMPPRosterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRosterTests;
@@ -493,7 +607,9 @@
 		F677BF341E39104B00BD488C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS/";
 				INFOPLIST_FILE = XMPPRosterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRosterTests;
@@ -505,6 +621,7 @@
 		F677BF4C1E3910AA00BD488C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -512,6 +629,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac/";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = XMPPRoster/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -521,6 +639,7 @@
 				PRODUCT_NAME = XMPPRoster;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -528,6 +647,7 @@
 		F677BF4D1E3910AA00BD488C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -535,6 +655,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac/";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = XMPPRoster/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -551,9 +672,11 @@
 		F677BF4F1E3910AA00BD488C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac/";
 				INFOPLIST_FILE = XMPPRosterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -567,9 +690,11 @@
 		F677BF501E3910AA00BD488C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac/";
 				INFOPLIST_FILE = XMPPRosterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
