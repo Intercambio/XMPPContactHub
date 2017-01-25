@@ -101,7 +101,42 @@ public class FileRoster: Roster {
         }
     }
     
-    public func replace(with items: [Item]) throws {}
+    public func replace(with items: [Item]) throws {
+        try queue.sync {
+            guard
+                let db = self.db
+                else { throw RosterError.notSetup }
+            
+            try db.transaction {
+                _ = try db.run(
+                    FileRosterSchema.item.delete()
+                )
+                _ = try db.run(
+                    FileRosterSchema.group.delete()
+                )
+                
+                for item in items {
+                    guard
+                        item.account == self.account
+                        else { throw RosterError.invalidItem }
+                    
+                    _ = try db.run(
+                        FileRosterSchema.item.insert(or: .replace,
+                                                     FileRosterSchema.item_jid <- item.counterpart,
+                                                     FileRosterSchema.item_subscription <- item.subscription,
+                                                     FileRosterSchema.item_name <- item.name
+                    ))
+                    for name in item.groups {
+                        _ = try db.run(
+                            FileRosterSchema.group.insert(
+                                FileRosterSchema.group_jid <- item.counterpart,
+                                FileRosterSchema.group_name <- name
+                        ))
+                    }
+                }
+            }
+        }
+    }
     
     public func all() throws -> [Item] {
         return try queue.sync {

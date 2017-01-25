@@ -72,4 +72,38 @@ class FileRosterTests: TestCase {
         }
     }
     
+    func testReplace() {
+        guard
+            let roster = self.roster
+            else {
+                XCTFail();
+                return
+        }
+        do {
+            let itemA = Item(account: JID("romeo@example.com")!,
+                            counterpart: JID("a@example.com")!,
+                            subscription: .both,
+                            name: "A",
+                            groups: ["Friends"])
+            let itemB = Item(account: JID("romeo@example.com")!,
+                             counterpart: JID("b@example.com")!,
+                             subscription: .both,
+                             name: "B",
+                             groups: ["Friends"])
+            let itemC = Item(account: JID("romeo@example.com")!,
+                             counterpart: JID("b@example.com")!,
+                             subscription: .both,
+                             name: "B",
+                             groups: ["Friends", "Lovers"])
+            
+            try roster.add(itemA)
+            try roster.add(itemB)
+            try roster.replace(with: [itemC])
+            let items = try roster.all()
+            XCTAssertEqual(items.count, 1)
+            XCTAssertTrue(items.contains(itemC))
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
 }
