@@ -55,7 +55,29 @@ public class FileRoster: Roster {
     
     // MARK: - Roster
     
-    public func add(_ item: Item) throws {
+    public var version: String? {
+        get {
+            return queue.sync {
+                guard
+                    let db = self.db
+                    else { return nil }
+                do {
+                    let query = FileRosterSchema.option
+                        .filter(FileRosterSchema.option_key == "version")
+                        .select(FileRosterSchema.option_value)
+                    if let row = try db.pluck(query) {
+                        return row[FileRosterSchema.option_value]
+                    } else {
+                        return nil
+                    }
+                } catch {
+                    return nil
+                }
+            }
+        }
+    }
+    
+    public func add(_ item: Item, version: String?) throws {
         try queue.sync {
             guard
                 let db = self.db
@@ -82,12 +104,24 @@ public class FileRoster: Roster {
                             FileRosterSchema.group_name <- name
                     ))
                 }
+                
+                if let value = version {
+                    _ = try db.run(
+                        FileRosterSchema.option.insert(or: .replace,
+                                                       FileRosterSchema.option_key <- "version",
+                                                       FileRosterSchema.option_value <- value)
+                    )
+                } else {
+                    _ = try db.run(
+                        FileRosterSchema.option.filter(FileRosterSchema.option_key == "version").delete()
+                    )
+                }
             }
             self.postChangeNotification()
         }
     }
     
-    public func remove(_ item: Item) throws {
+    public func remove(_ item: Item, version: String?) throws {
         try queue.sync {
             guard
                 let db = self.db
@@ -100,12 +134,23 @@ public class FileRoster: Roster {
                 _ = try db.run(
                     FileRosterSchema.group.filter(FileRosterSchema.group_jid == item.counterpart).delete()
                 )
+                if let value = version {
+                    _ = try db.run(
+                        FileRosterSchema.option.insert(or: .replace,
+                                                       FileRosterSchema.option_key <- "version",
+                                                       FileRosterSchema.option_value <- value)
+                    )
+                } else {
+                    _ = try db.run(
+                        FileRosterSchema.option.filter(FileRosterSchema.option_key == "version").delete()
+                    )
+                }
             }
             self.postChangeNotification()
         }
     }
     
-    public func replace(with items: [Item]) throws {
+    public func replace(with items: [Item], version: String?) throws {
         try queue.sync {
             guard
                 let db = self.db
@@ -137,6 +182,17 @@ public class FileRoster: Roster {
                                 FileRosterSchema.group_name <- name
                         ))
                     }
+                }
+                if let value = version {
+                    _ = try db.run(
+                        FileRosterSchema.option.insert(or: .replace,
+                                                       FileRosterSchema.option_key <- "version",
+                                                       FileRosterSchema.option_value <- value)
+                    )
+                } else {
+                    _ = try db.run(
+                        FileRosterSchema.option.filter(FileRosterSchema.option_key == "version").delete()
+                    )
                 }
             }
             self.postChangeNotification()
@@ -205,6 +261,9 @@ class FileRosterSchema {
     static let group = Table("group")
     static let group_jid = Expression<JID>("jid")
     static let group_name = Expression<String>("name")
+    static let option = Table("option")
+    static let option_key = Expression<String>("key")
+    static let option_value = Expression<String>("value")
     
     static let version: Int = 1
     
@@ -255,6 +314,10 @@ class FileRosterSchema {
             t.column(FileRosterSchema.group_name)
             t.foreignKey(FileRosterSchema.group_jid, references: FileRosterSchema.item, FileRosterSchema.item_jid)
             t.unique([FileRosterSchema.group_jid, FileRosterSchema.group_name])
+        })
+        try db.run(FileRosterSchema.option.create { t in
+            t.column(FileRosterSchema.option_key, primaryKey: true)
+            t.column(FileRosterSchema.option_value)
         })
     }
     

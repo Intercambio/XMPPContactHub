@@ -55,7 +55,7 @@ class FileRosterTests: TestCase {
                             subscription: .both,
                             name: "Juliet",
                             groups: ["Friends", "Lovers"])
-            try roster.add(item)
+            try roster.add(item, version: nil)
             let items = try roster.all()
             XCTAssertTrue(items.contains(item))
             if let item = items.first {
@@ -65,7 +65,7 @@ class FileRosterTests: TestCase {
                 XCTAssertTrue(item.groups.contains("Friends"))
                 XCTAssertTrue(item.groups.contains("Lovers"))
             }
-            try roster.remove(item)
+            try roster.remove(item, version: nil)
             XCTAssertFalse(try roster.all().contains(item))
         } catch {
             XCTFail("\(error)")
@@ -96,12 +96,32 @@ class FileRosterTests: TestCase {
                              name: "B",
                              groups: ["Friends", "Lovers"])
             
-            try roster.add(itemA)
-            try roster.add(itemB)
-            try roster.replace(with: [itemC])
+            try roster.add(itemA, version: nil)
+            try roster.add(itemB, version: nil)
+            try roster.replace(with: [itemC], version: nil)
             let items = try roster.all()
             XCTAssertEqual(items.count, 1)
             XCTAssertTrue(items.contains(itemC))
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
+    
+    func testVersion() {
+        guard
+            let roster = self.roster
+            else {
+                XCTFail();
+                return
+        }
+        do {
+            let item = Item(account: JID("romeo@example.com")!,
+                             counterpart: JID("a@example.com")!,
+                             subscription: .both,
+                             name: "A",
+                             groups: ["Friends"])
+            try roster.add(item, version: "1534761")
+            XCTAssertEqual(roster.version, "1534761")
         } catch {
             XCTFail("\(error)")
         }
