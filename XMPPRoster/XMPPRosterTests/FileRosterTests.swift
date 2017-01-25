@@ -42,7 +42,7 @@ class FileRosterTests: TestCase {
     
     // MARK: Tests
 
-    func testAddItem() {
+    func testAddAndRemoveItem() {
         guard
             let roster = self.roster
             else {
@@ -65,7 +65,8 @@ class FileRosterTests: TestCase {
                 XCTAssertTrue(item.groups.contains("Friends"))
                 XCTAssertTrue(item.groups.contains("Lovers"))
             }
-            
+            try roster.remove(item)
+            XCTAssertFalse(try roster.all().contains(item))
         } catch {
             XCTFail("\(error)")
         }

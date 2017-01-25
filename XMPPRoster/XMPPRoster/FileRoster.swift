@@ -84,7 +84,22 @@ public class FileRoster: Roster {
         }
     }
     
-    public func remove(_ item: Item) throws {}
+    public func remove(_ item: Item) throws {
+        try queue.sync {
+            guard
+                let db = self.db
+                else { throw RosterError.notSetup }
+            
+            try db.transaction {
+                _ = try db.run(
+                    FileRosterSchema.item.filter(FileRosterSchema.item_jid == item.counterpart).delete()
+                )
+                _ = try db.run(
+                    FileRosterSchema.group.filter(FileRosterSchema.group_jid == item.counterpart).delete()
+                )
+            }
+        }
+    }
     
     public func replace(with items: [Item]) throws {}
     
