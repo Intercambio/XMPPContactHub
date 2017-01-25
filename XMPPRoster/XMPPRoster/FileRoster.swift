@@ -65,22 +65,25 @@ public class FileRoster: Roster {
                 item.account == self.account
                 else { throw RosterError.invalidItem }
             
-            _ = try db.run(
-                FileRosterSchema.item.insert(or: .replace,
-                    FileRosterSchema.item_jid <- item.counterpart,
-                    FileRosterSchema.item_subscription <- item.subscription,
-                    FileRosterSchema.item_name <- item.name
-                ))
-            _ = try db.run(
-                FileRosterSchema.group.filter(FileRosterSchema.group_jid == item.counterpart).delete()
-            )
-            for name in item.groups {
+            try db.transaction {
                 _ = try db.run(
-                FileRosterSchema.group.insert(
-                    FileRosterSchema.group_jid <- item.counterpart,
-                    FileRosterSchema.group_name <- name
+                    FileRosterSchema.item.insert(or: .replace,
+                                                 FileRosterSchema.item_jid <- item.counterpart,
+                                                 FileRosterSchema.item_subscription <- item.subscription,
+                                                 FileRosterSchema.item_name <- item.name
                 ))
+                _ = try db.run(
+                    FileRosterSchema.group.filter(FileRosterSchema.group_jid == item.counterpart).delete()
+                )
+                for name in item.groups {
+                    _ = try db.run(
+                        FileRosterSchema.group.insert(
+                            FileRosterSchema.group_jid <- item.counterpart,
+                            FileRosterSchema.group_name <- name
+                    ))
+                }
             }
+            self.postChangeNotification()
         }
     }
     
@@ -98,6 +101,7 @@ public class FileRoster: Roster {
                     FileRosterSchema.group.filter(FileRosterSchema.group_jid == item.counterpart).delete()
                 )
             }
+            self.postChangeNotification()
         }
     }
     
@@ -135,6 +139,7 @@ public class FileRoster: Roster {
                     }
                 }
             }
+            self.postChangeNotification()
         }
     }
     
@@ -180,6 +185,13 @@ public class FileRoster: Roster {
                 }
             }
             return items
+        }
+    }
+    
+    private func postChangeNotification() {
+        DispatchQueue.main.async {
+            let center = NotificationCenter.default
+            center.post(name: Notification.Name.RosterDidChange, object: self)
         }
     }
 }
