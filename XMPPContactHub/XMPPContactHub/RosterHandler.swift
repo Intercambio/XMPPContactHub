@@ -20,7 +20,7 @@ class RosterHandler: NSObject, ConnectionHandler, RosterRequestDelegate {
     
     struct PendingRequest {
         typealias CompletionHandler = (Error?) -> Void
-        var request: RosterRequest
+        var request: RosterRequest?
         var completionHandler: [CompletionHandler]
     }
     
@@ -47,6 +47,11 @@ class RosterHandler: NSObject, ConnectionHandler, RosterRequestDelegate {
                     self.pendingRequests[account] = pendingRequest
                 }
             } else {
+                var pendingRequest = PendingRequest(request: nil, completionHandler: [])
+                if let handler = completion {
+                    pendingRequest.completionHandler.append(handler)
+                }
+                self.pendingRequests[account] = pendingRequest
                 self.rosterManager.roster(for: account, create: true) { roster, error in
                     self.queue.async {
                         if let accountRoster = roster {
