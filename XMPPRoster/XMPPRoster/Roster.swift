@@ -52,6 +52,8 @@ public protocol Roster {
     func items() throws -> [Item]
     func items(in group: String) throws -> [Item]
     func items(pending: Pending) throws -> [Item]
+    
+    func groups() throws -> [String]
 }
 
 public protocol VersionedRoster: Roster {

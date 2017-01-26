@@ -226,6 +226,24 @@ public class FileRoster: VersionedRoster {
         }
     }
     
+    public func groups() throws -> [String] {
+        return try queue.sync {
+            guard
+                let db = self.db
+                else { throw RosterError.notSetup }
+            
+            var groups: [String] = []
+            try db.transaction {
+                let groupQuery = FileRosterSchema.group.select(distinct: FileRosterSchema.group_name)
+                for row in try db.prepare(groupQuery) {
+                    let name = row.get(FileRosterSchema.group_name)
+                    groups.append(name)
+                }
+            }
+            return groups
+        }
+    }
+    
     private func all() throws -> [Item] {
         guard
             let db = self.db

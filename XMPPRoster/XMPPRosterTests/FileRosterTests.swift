@@ -111,6 +111,46 @@ class FileRosterTests: TestCase {
         }
     }
     
+    func testGroups() {
+        guard
+            let roster = self.roster
+            else {
+                XCTFail();
+                return
+        }
+        do {
+            let itemA = Item(account: JID("romeo@example.com")!,
+                             counterpart: JID("a@example.com")!,
+                             subscription: .both,
+                             pending: .none,
+                             name: "A",
+                             groups: ["Friends"])
+            let itemB = Item(account: JID("romeo@example.com")!,
+                             counterpart: JID("b@example.com")!,
+                             subscription: .both,
+                             pending: .none,
+                             name: "B",
+                             groups: ["Friends"])
+            let itemC = Item(account: JID("romeo@example.com")!,
+                             counterpart: JID("c@example.com")!,
+                             subscription: .both,
+                             pending: .none,
+                             name: "B",
+                             groups: ["Friends", "Lovers"])
+            
+            try roster.add(itemA, version: nil)
+            try roster.add(itemB, version: nil)
+            try roster.add(itemC, version: nil)
+
+            let groups = try roster.groups()
+            XCTAssertEqual(groups.count, 2)
+            XCTAssertTrue(groups.contains("Lovers"))
+            XCTAssertTrue(groups.contains("Friends"))
+        } catch {
+            XCTFail("\(error)")
+        }
+    }
+    
     func testVersion() {
         guard
             let roster = self.roster
