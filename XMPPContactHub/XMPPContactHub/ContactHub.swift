@@ -14,13 +14,14 @@ public class ContactHub: NSObject, RosterManager {
     private let queue: DispatchQueue
     private let dispatcher: Dispatcher
     private let rosterManager: RosterManager
+    private let rosterHandler: RosterHandler
     
     public required init(dispatcher: Dispatcher, directory: URL) {
         self.dispatcher = dispatcher
         
         let rosterDirectory = directory.appendingPathComponent("roster", isDirectory: true)
         self.rosterManager = FileRosterManager(directory: rosterDirectory)
-        
+        self.rosterHandler = RosterHandler(dispatcher: dispatcher, rosterManager: rosterManager)
         queue = DispatchQueue(label: "Contact Hub", attributes: [.concurrent])
     }
     
