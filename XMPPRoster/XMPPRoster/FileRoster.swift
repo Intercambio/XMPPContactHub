@@ -204,52 +204,73 @@ public class FileRoster: VersionedRoster {
         }
     }
     
-    public func all() throws -> [Item] {
+    public func items() throws -> [Item] {
         return try queue.sync {
-            guard
-                let db = self.db
-                else { throw RosterError.notSetup }
+            return try self.all()
+        }
+    }
+    
+    public func items(in group: String) throws -> [Item] {
+        return try queue.sync {
+            return try self.all().filter({ (item) -> Bool in
+                item.groups.contains(group)
+            })
+        }
+    }
+    
+    public func items(pending: Pending) throws -> [Item] {
+        return try queue.sync {
+            return try self.all().filter({ (item) -> Bool in
+                item.pending == pending
+            })
+        }
+    }
+    
+    private func all() throws -> [Item] {
+        guard
+            let db = self.db
+            else { throw RosterError.notSetup }
+        
+        var items: [Item] = []
+        try db.transaction {
             
             var groupsByCounterpart: [JID:[String]] = [:]
-            var items: [Item] = []
-            try db.transaction {
-                
-                let groupQuery = FileRosterSchema.group.select(
-                    FileRosterSchema.group_jid,
-                    FileRosterSchema.group_name)
-                
-                for row in try db.prepare(groupQuery) {
-                    let jid = row.get(FileRosterSchema.group_jid)
-                    let name = row.get(FileRosterSchema.group_name)
-                    var groups = groupsByCounterpart[jid] ?? []
-                    groups.append(name)
-                    groupsByCounterpart[jid] = groups
-                }
-                
-                let itemQuery = FileRosterSchema.item.select(
-                    FileRosterSchema.item_jid,
-                    FileRosterSchema.item_subscription,
-                    FileRosterSchema.item_pending,
-                    FileRosterSchema.item_name
-                )
-                
-                for row in try db.prepare(itemQuery) {
-                    let counterpart = row.get(FileRosterSchema.item_jid)
-                    let subscription = row.get(FileRosterSchema.item_subscription)
-                    let pending = row.get(FileRosterSchema.item_pending)
-                    let name = row.get(FileRosterSchema.item_name)
-                    let groups = groupsByCounterpart[counterpart] ?? []
-                    let item = Item(account: self.account,
-                                    counterpart: counterpart,
-                                    subscription: subscription,
-                                    pending: pending,
-                                    name: name,
-                                    groups: groups)
-                    items.append(item)
-                }
+            
+            let groupQuery = FileRosterSchema.group.select(
+                FileRosterSchema.group_jid,
+                FileRosterSchema.group_name)
+            
+            for row in try db.prepare(groupQuery) {
+                let jid = row.get(FileRosterSchema.group_jid)
+                let name = row.get(FileRosterSchema.group_name)
+                var groups = groupsByCounterpart[jid] ?? []
+                groups.append(name)
+                groupsByCounterpart[jid] = groups
             }
-            return items
+            
+            let itemQuery = FileRosterSchema.item.select(
+                FileRosterSchema.item_jid,
+                FileRosterSchema.item_subscription,
+                FileRosterSchema.item_pending,
+                FileRosterSchema.item_name
+            )
+            
+            for row in try db.prepare(itemQuery) {
+                let counterpart = row.get(FileRosterSchema.item_jid)
+                let subscription = row.get(FileRosterSchema.item_subscription)
+                let pending = row.get(FileRosterSchema.item_pending)
+                let name = row.get(FileRosterSchema.item_name)
+                let groups = groupsByCounterpart[counterpart] ?? []
+                let item = Item(account: self.account,
+                                counterpart: counterpart,
+                                subscription: subscription,
+                                pending: pending,
+                                name: name,
+                                groups: groups)
+                items.append(item)
+            }
         }
+        return items
     }
     
     private func postChangeNotification() {

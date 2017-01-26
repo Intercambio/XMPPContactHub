@@ -57,7 +57,7 @@ class FileRosterTests: TestCase {
                             name: "Juliet",
                             groups: ["Friends", "Lovers"])
             try roster.add(item, version: nil)
-            let items = try roster.all()
+            let items = try roster.items()
             XCTAssertTrue(items.contains(item))
             if let item = items.first {
                 XCTAssertEqual(item.subscription, .both)
@@ -67,7 +67,7 @@ class FileRosterTests: TestCase {
                 XCTAssertTrue(item.groups.contains("Lovers"))
             }
             try roster.remove(item, version: nil)
-            XCTAssertFalse(try roster.all().contains(item))
+            XCTAssertFalse(try roster.items().contains(item))
         } catch {
             XCTFail("\(error)")
         }
@@ -103,7 +103,7 @@ class FileRosterTests: TestCase {
             try roster.add(itemA, version: nil)
             try roster.add(itemB, version: nil)
             try roster.replace(with: [itemC], version: nil)
-            let items = try roster.all()
+            let items = try roster.items()
             XCTAssertEqual(items.count, 1)
             XCTAssertTrue(items.contains(itemC))
         } catch {

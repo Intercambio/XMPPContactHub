@@ -49,7 +49,9 @@ public protocol Roster {
     func remove(_ item: Item) throws -> Void
     func replace(with items: [Item]) throws -> Void
     
-    func all() throws -> [Item]
+    func items() throws -> [Item]
+    func items(in group: String) throws -> [Item]
+    func items(pending: Pending) throws -> [Item]
 }
 
 public protocol VersionedRoster: Roster {
