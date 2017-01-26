@@ -13,6 +13,8 @@
 		F61126BA1E3A242300A8E75F /* FileRosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126B81E3A242300A8E75F /* FileRosterManager.swift */; };
 		F61126BC1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */; };
 		F61126BD1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */; };
+		F61126C11E3A2C4300A8E75F /* ContactHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126C01E3A2C4300A8E75F /* ContactHub.swift */; };
+		F61126C21E3A2C4300A8E75F /* ContactHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126C01E3A2C4300A8E75F /* ContactHub.swift */; };
 		F677BF251E39104B00BD488C /* XMPPContactHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF1B1E39104B00BD488C /* XMPPContactHub.framework */; };
 		F677BF2C1E39104B00BD488C /* XMPPContactHub.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPContactHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F677BF431E3910AA00BD488C /* XMPPContactHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF3A1E3910AA00BD488C /* XMPPContactHub.framework */; };
@@ -78,6 +80,7 @@
 		F61126B41E3A23BC00A8E75F /* RosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RosterManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F61126B81E3A242300A8E75F /* FileRosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileRosterManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileRosterManagerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F61126C01E3A2C4300A8E75F /* ContactHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactHub.swift; sourceTree = "<group>"; };
 		F677BF1B1E39104B00BD488C /* XMPPContactHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPContactHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F677BF1E1E39104B00BD488C /* XMPPContactHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = XMPPContactHub.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F677BF1F1E39104B00BD488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +165,14 @@
 			name = Roster;
 			sourceTree = "<group>";
 		};
+		F61126BF1E3A2C3500A8E75F /* Hub */ = {
+			isa = PBXGroup;
+			children = (
+				F61126C01E3A2C4300A8E75F /* ContactHub.swift */,
+			);
+			name = Hub;
+			sourceTree = "<group>";
+		};
 		F677BF111E39104A00BD488C = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +197,7 @@
 		F677BF1D1E39104B00BD488C /* XMPPContactHub */ = {
 			isa = PBXGroup;
 			children = (
+				F61126BF1E3A2C3500A8E75F /* Hub */,
 				F61126BE1E3A2B4600A8E75F /* Roster */,
 				F677BF561E39129200BD488C /* Supporting Files */,
 			);
@@ -466,6 +478,7 @@
 				F61126B91E3A242300A8E75F /* FileRosterManager.swift in Sources */,
 				F677BF6E1E392D2A00BD488C /* FileRoster.swift in Sources */,
 				F61126B51E3A23BC00A8E75F /* RosterManager.swift in Sources */,
+				F61126C11E3A2C4300A8E75F /* ContactHub.swift in Sources */,
 				F677BF541E3911A600BD488C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +500,7 @@
 				F61126BA1E3A242300A8E75F /* FileRosterManager.swift in Sources */,
 				F677BF6F1E392D2A00BD488C /* FileRoster.swift in Sources */,
 				F61126B61E3A23BE00A8E75F /* RosterManager.swift in Sources */,
+				F61126C21E3A2C4300A8E75F /* ContactHub.swift in Sources */,
 				F677BF551E3911A700BD488C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
