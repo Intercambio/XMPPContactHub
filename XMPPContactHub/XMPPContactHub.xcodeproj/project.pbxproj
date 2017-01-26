@@ -15,6 +15,14 @@
 		F61126BD1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */; };
 		F61126C11E3A2C4300A8E75F /* ContactHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126C01E3A2C4300A8E75F /* ContactHub.swift */; };
 		F61126C21E3A2C4300A8E75F /* ContactHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126C01E3A2C4300A8E75F /* ContactHub.swift */; };
+		F61126C51E3A2E5D00A8E75F /* RosterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126C41E3A2E5D00A8E75F /* RosterHandler.swift */; };
+		F61126C61E3A2E5D00A8E75F /* RosterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126C41E3A2E5D00A8E75F /* RosterHandler.swift */; };
+		F61126C81E3A506500A8E75F /* RosterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126C71E3A506500A8E75F /* RosterResult.swift */; };
+		F61126C91E3A506500A8E75F /* RosterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126C71E3A506500A8E75F /* RosterResult.swift */; };
+		F61126CC1E3A549D00A8E75F /* RosterResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126CB1E3A549D00A8E75F /* RosterResultTests.swift */; };
+		F61126CD1E3A549D00A8E75F /* RosterResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126CB1E3A549D00A8E75F /* RosterResultTests.swift */; };
+		F61126CF1E3A556F00A8E75F /* roster.xml in Resources */ = {isa = PBXBuildFile; fileRef = F61126CE1E3A556F00A8E75F /* roster.xml */; };
+		F61126D01E3A556F00A8E75F /* roster.xml in Resources */ = {isa = PBXBuildFile; fileRef = F61126CE1E3A556F00A8E75F /* roster.xml */; };
 		F677BF251E39104B00BD488C /* XMPPContactHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF1B1E39104B00BD488C /* XMPPContactHub.framework */; };
 		F677BF2C1E39104B00BD488C /* XMPPContactHub.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPContactHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F677BF431E3910AA00BD488C /* XMPPContactHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF3A1E3910AA00BD488C /* XMPPContactHub.framework */; };
@@ -81,6 +89,10 @@
 		F61126B81E3A242300A8E75F /* FileRosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileRosterManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileRosterManagerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F61126C01E3A2C4300A8E75F /* ContactHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactHub.swift; sourceTree = "<group>"; };
+		F61126C41E3A2E5D00A8E75F /* RosterHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterHandler.swift; sourceTree = "<group>"; };
+		F61126C71E3A506500A8E75F /* RosterResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterResult.swift; sourceTree = "<group>"; };
+		F61126CB1E3A549D00A8E75F /* RosterResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterResultTests.swift; sourceTree = "<group>"; };
+		F61126CE1E3A556F00A8E75F /* roster.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = roster.xml; sourceTree = "<group>"; };
 		F677BF1B1E39104B00BD488C /* XMPPContactHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPContactHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F677BF1E1E39104B00BD488C /* XMPPContactHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = XMPPContactHub.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F677BF1F1E39104B00BD488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +185,23 @@
 			name = Hub;
 			sourceTree = "<group>";
 		};
+		F61126C31E3A2E4200A8E75F /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				F61126C41E3A2E5D00A8E75F /* RosterHandler.swift */,
+				F61126C71E3A506500A8E75F /* RosterResult.swift */,
+			);
+			name = Handler;
+			sourceTree = "<group>";
+		};
+		F61126CA1E3A548700A8E75F /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				F61126CB1E3A549D00A8E75F /* RosterResultTests.swift */,
+			);
+			name = Handler;
+			sourceTree = "<group>";
+		};
 		F677BF111E39104A00BD488C = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				F61126BF1E3A2C3500A8E75F /* Hub */,
+				F61126C31E3A2E4200A8E75F /* Handler */,
 				F61126BE1E3A2B4600A8E75F /* Roster */,
 				F677BF561E39129200BD488C /* Supporting Files */,
 			);
@@ -209,6 +239,7 @@
 			children = (
 				F677BF701E392EF100BD488C /* TestCase.swift */,
 				F677BF731E392F2A00BD488C /* File Roster */,
+				F61126CA1E3A548700A8E75F /* Handler */,
 				F677BF741E392F3500BD488C /* Supporting FIles */,
 			);
 			path = XMPPContactHubTests;
@@ -265,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				F677BF2B1E39104B00BD488C /* Info.plist */,
+				F61126CE1E3A556F00A8E75F /* roster.xml */,
 			);
 			name = "Supporting FIles";
 			sourceTree = "<group>";
@@ -431,6 +463,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61126CF1E3A556F00A8E75F /* roster.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +478,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61126D01E3A556F00A8E75F /* roster.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +512,8 @@
 				F61126B91E3A242300A8E75F /* FileRosterManager.swift in Sources */,
 				F677BF6E1E392D2A00BD488C /* FileRoster.swift in Sources */,
 				F61126B51E3A23BC00A8E75F /* RosterManager.swift in Sources */,
+				F61126C51E3A2E5D00A8E75F /* RosterHandler.swift in Sources */,
+				F61126C81E3A506500A8E75F /* RosterResult.swift in Sources */,
 				F61126C11E3A2C4300A8E75F /* ContactHub.swift in Sources */,
 				F677BF541E3911A600BD488C /* Roster.swift in Sources */,
 			);
@@ -490,6 +526,7 @@
 				F677BF761E392F4A00BD488C /* FileRosterTests.swift in Sources */,
 				F61126BC1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */,
 				F677BF711E392EF100BD488C /* TestCase.swift in Sources */,
+				F61126CC1E3A549D00A8E75F /* RosterResultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +537,8 @@
 				F61126BA1E3A242300A8E75F /* FileRosterManager.swift in Sources */,
 				F677BF6F1E392D2A00BD488C /* FileRoster.swift in Sources */,
 				F61126B61E3A23BE00A8E75F /* RosterManager.swift in Sources */,
+				F61126C61E3A2E5D00A8E75F /* RosterHandler.swift in Sources */,
+				F61126C91E3A506500A8E75F /* RosterResult.swift in Sources */,
 				F61126C21E3A2C4300A8E75F /* ContactHub.swift in Sources */,
 				F677BF551E3911A700BD488C /* Roster.swift in Sources */,
 			);
@@ -512,6 +551,7 @@
 				F677BF771E392F4A00BD488C /* FileRosterTests.swift in Sources */,
 				F61126BD1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */,
 				F677BF721E392EF100BD488C /* TestCase.swift in Sources */,
+				F61126CD1E3A549D00A8E75F /* RosterResultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

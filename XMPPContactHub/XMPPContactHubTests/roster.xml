@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<query xmlns='jabber:iq:roster' ver='ver7'>
+    <item jid='juliet@example.net'
+        name='Juliet'
+        subscription='both'>
+        <group>Friends</group>
+        <group>Lovers</group>
+    </item>
+    <item jid='mercutio@example.org'
+        name='Mercutio'
+        subscription='from'>
+        <group>Friends</group>
+    </item>
+    <item jid='benvolio@example.org'
+        name='Benvolio'
+        subscription='to'
+        ask='subscribe'>
+        <group>Friends</group>
+    </item>
+</query>
