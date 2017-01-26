@@ -8,6 +8,7 @@
 
 import Foundation
 import XMPPFoundation
+import PureXML
 
 class RosterHandler: NSObject, ConnectionHandler, RosterRequestDelegate {
     
@@ -43,6 +44,7 @@ class RosterHandler: NSObject, ConnectionHandler, RosterRequestDelegate {
             if var pendingRequest = self.pendingRequests[account] {
                 if let handler = completion {
                     pendingRequest.completionHandler.append(handler)
+                    self.pendingRequests[account] = pendingRequest
                 }
             } else {
                 self.rosterManager.roster(for: account, create: true) { roster, error in
@@ -52,6 +54,7 @@ class RosterHandler: NSObject, ConnectionHandler, RosterRequestDelegate {
                                 let request = RosterRequest(dispatcher: self.dispatcher, roster: accountRoster)
                                 request.delegate = self
                                 pendingRequest.request = request
+                                self.pendingRequests[account] = pendingRequest
                                 request.run()
                             }
                         } else {
@@ -136,8 +139,9 @@ class RosterRequest {
     
     func run() {
         queue.sync {
-            let stanze = IQStanza(type: .get, from: roster.account, to: roster.account)
-            dispatcher.handleIQRequest(stanze, timeout: 120.0) { stanza, error in
+            let stanza = IQStanza(type: .get, from: roster.account, to: roster.account)
+            _ = stanza.add(withName: "query", namespace: "jabber:iq:roster", content: nil)
+            dispatcher.handleIQRequest(stanza, timeout: 120.0) { stanza, error in
                 self.queue.async {
                     if let response = stanza {
                         self.handleResultResponse(stanza: response)
