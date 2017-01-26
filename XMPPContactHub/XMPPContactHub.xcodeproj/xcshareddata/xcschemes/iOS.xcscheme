@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F677BF1A1E39104B00BD488C"
-               BuildableName = "XMPPRoster.framework"
+               BuildableName = "XMPPContactHub.framework"
                BlueprintName = "iOS"
                ReferencedContainer = "container:XMPPContactHub.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F677BF231E39104B00BD488C"
-               BuildableName = "XMPPRosterTests.xctest"
+               BuildableName = "XMPPContactHubTests.xctest"
                BlueprintName = "iOSTests"
                ReferencedContainer = "container:XMPPContactHub.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F677BF1A1E39104B00BD488C"
-            BuildableName = "XMPPRoster.framework"
+            BuildableName = "XMPPContactHub.framework"
             BlueprintName = "iOS"
             ReferencedContainer = "container:XMPPContactHub.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F677BF1A1E39104B00BD488C"
-            BuildableName = "XMPPRoster.framework"
+            BuildableName = "XMPPContactHub.framework"
             BlueprintName = "iOS"
             ReferencedContainer = "container:XMPPContactHub.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F677BF1A1E39104B00BD488C"
-            BuildableName = "XMPPRoster.framework"
+            BuildableName = "XMPPContactHub.framework"
             BlueprintName = "iOS"
             ReferencedContainer = "container:XMPPContactHub.xcodeproj">
          </BuildableReference>
