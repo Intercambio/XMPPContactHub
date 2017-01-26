@@ -170,7 +170,7 @@ class RosterRequest {
         guard
             let query = stanza.nodes(forXPath: "./r:query", usingNamespaces: namespaces).first as? PXElement
         else {
-            self.handleErrorResponse(error: RosterRequestError.invalidResponse)
+            self.delegate?.rosterRequestDidSuccess(self)
             return
         }
         
