@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F61126B51E3A23BC00A8E75F /* RosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126B41E3A23BC00A8E75F /* RosterManager.swift */; };
+		F61126B61E3A23BE00A8E75F /* RosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126B41E3A23BC00A8E75F /* RosterManager.swift */; };
+		F61126B91E3A242300A8E75F /* FileRosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126B81E3A242300A8E75F /* FileRosterManager.swift */; };
+		F61126BA1E3A242300A8E75F /* FileRosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126B81E3A242300A8E75F /* FileRosterManager.swift */; };
+		F61126BC1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */; };
+		F61126BD1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */; };
 		F677BF251E39104B00BD488C /* XMPPRoster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF1B1E39104B00BD488C /* XMPPRoster.framework */; };
 		F677BF2C1E39104B00BD488C /* XMPPRoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPRoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F677BF431E3910AA00BD488C /* XMPPRoster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */; };
@@ -69,6 +75,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F61126B41E3A23BC00A8E75F /* RosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterManager.swift; sourceTree = "<group>"; };
+		F61126B81E3A242300A8E75F /* FileRosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRosterManager.swift; sourceTree = "<group>"; };
+		F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRosterManagerTests.swift; sourceTree = "<group>"; };
 		F677BF1B1E39104B00BD488C /* XMPPRoster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPRoster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F677BF1E1E39104B00BD488C /* XMPPRoster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMPPRoster.h; sourceTree = "<group>"; };
 		F677BF1F1E39104B00BD488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +143,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F61126B71E3A23F300A8E75F /* File Roster */ = {
+			isa = PBXGroup;
+			children = (
+				F677BF6D1E392D2A00BD488C /* FileRoster.swift */,
+				F61126B81E3A242300A8E75F /* FileRosterManager.swift */,
+			);
+			name = "File Roster";
+			sourceTree = "<group>";
+		};
 		F677BF111E39104A00BD488C = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				F677BF531E3911A600BD488C /* Roster.swift */,
-				F677BF6D1E392D2A00BD488C /* FileRoster.swift */,
+				F61126B41E3A23BC00A8E75F /* RosterManager.swift */,
+				F61126B71E3A23F300A8E75F /* File Roster */,
 				F677BF561E39129200BD488C /* Supporting Files */,
 			);
 			path = XMPPRoster;
@@ -217,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				F677BF751E392F4A00BD488C /* FileRosterTests.swift */,
+				F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */,
 			);
 			name = "File Roster";
 			sourceTree = "<group>";
@@ -418,7 +438,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/../Carthage/Build/iOS/PureXML.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/XMLFoundation.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
 			);
 			name = Carthage;
@@ -435,7 +455,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61126B91E3A242300A8E75F /* FileRosterManager.swift in Sources */,
 				F677BF6E1E392D2A00BD488C /* FileRoster.swift in Sources */,
+				F61126B51E3A23BC00A8E75F /* RosterManager.swift in Sources */,
 				F677BF541E3911A600BD488C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F677BF761E392F4A00BD488C /* FileRosterTests.swift in Sources */,
+				F61126BC1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */,
 				F677BF711E392EF100BD488C /* TestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,7 +476,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61126BA1E3A242300A8E75F /* FileRosterManager.swift in Sources */,
 				F677BF6F1E392D2A00BD488C /* FileRoster.swift in Sources */,
+				F61126B61E3A23BE00A8E75F /* RosterManager.swift in Sources */,
 				F677BF551E3911A700BD488C /* Roster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F677BF771E392F4A00BD488C /* FileRosterTests.swift in Sources */,
+				F61126BD1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */,
 				F677BF721E392EF100BD488C /* TestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +787,7 @@
 				F677BF311E39104B00BD488C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F677BF321E39104B00BD488C /* Build configuration list for PBXNativeTarget "iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -769,6 +796,7 @@
 				F677BF341E39104B00BD488C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F677BF4B1E3910AA00BD488C /* Build configuration list for PBXNativeTarget "macOS" */ = {
 			isa = XCConfigurationList;
@@ -777,6 +805,7 @@
 				F677BF4D1E3910AA00BD488C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F677BF4E1E3910AA00BD488C /* Build configuration list for PBXNativeTarget "macOSTests" */ = {
 			isa = XCConfigurationList;
@@ -785,6 +814,7 @@
 				F677BF501E3910AA00BD488C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

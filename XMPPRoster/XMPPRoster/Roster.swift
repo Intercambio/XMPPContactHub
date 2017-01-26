@@ -45,6 +45,9 @@ public struct Item: Hashable, Equatable {
 }
 
 public protocol Roster {
+    
+    var account: JID { get }
+    
     func add(_ item: Item) throws -> Void
     func remove(_ item: Item) throws -> Void
     func replace(with items: [Item]) throws -> Void
