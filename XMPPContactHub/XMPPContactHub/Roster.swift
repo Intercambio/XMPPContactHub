@@ -1,6 +1,6 @@
 //
 //  Roster.swift
-//  XMPPRoster
+//  XMPPContactHub
 //
 //  Created by Tobias Kraentzer on 25.01.17.
 //  Copyright © 2017 Tobias Kräntzer. All rights reserved.
@@ -68,5 +68,5 @@ public protocol VersionedRoster: Roster {
 }
 
 extension Notification.Name {
-    public static let RosterDidChange = Notification.Name("XMPPRosterDidChange")
+    public static let RosterDidChange = Notification.Name("XMPPContactHubDidChange")
 }

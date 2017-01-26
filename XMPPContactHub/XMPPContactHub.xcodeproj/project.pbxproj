@@ -13,10 +13,10 @@
 		F61126BA1E3A242300A8E75F /* FileRosterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126B81E3A242300A8E75F /* FileRosterManager.swift */; };
 		F61126BC1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */; };
 		F61126BD1E3A24E000A8E75F /* FileRosterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */; };
-		F677BF251E39104B00BD488C /* XMPPRoster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF1B1E39104B00BD488C /* XMPPRoster.framework */; };
-		F677BF2C1E39104B00BD488C /* XMPPRoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPRoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F677BF431E3910AA00BD488C /* XMPPRoster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */; };
-		F677BF511E39112000BD488C /* XMPPRoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPRoster.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F677BF251E39104B00BD488C /* XMPPContactHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF1B1E39104B00BD488C /* XMPPContactHub.framework */; };
+		F677BF2C1E39104B00BD488C /* XMPPContactHub.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPContactHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F677BF431E3910AA00BD488C /* XMPPContactHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF3A1E3910AA00BD488C /* XMPPContactHub.framework */; };
+		F677BF511E39112000BD488C /* XMPPContactHub.h in Headers */ = {isa = PBXBuildFile; fileRef = F677BF1E1E39104B00BD488C /* XMPPContactHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F677BF541E3911A600BD488C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF531E3911A600BD488C /* Roster.swift */; };
 		F677BF551E3911A700BD488C /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677BF531E3911A600BD488C /* Roster.swift */; };
 		F677BF5A1E39149000BD488C /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F677BF581E39149000BD488C /* PureXML.framework */; };
@@ -75,24 +75,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F61126B41E3A23BC00A8E75F /* RosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterManager.swift; sourceTree = "<group>"; };
-		F61126B81E3A242300A8E75F /* FileRosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRosterManager.swift; sourceTree = "<group>"; };
-		F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRosterManagerTests.swift; sourceTree = "<group>"; };
-		F677BF1B1E39104B00BD488C /* XMPPRoster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPRoster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F677BF1E1E39104B00BD488C /* XMPPRoster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMPPRoster.h; sourceTree = "<group>"; };
+		F61126B41E3A23BC00A8E75F /* RosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RosterManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F61126B81E3A242300A8E75F /* FileRosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileRosterManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F61126BB1E3A24E000A8E75F /* FileRosterManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileRosterManagerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F677BF1B1E39104B00BD488C /* XMPPContactHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPContactHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F677BF1E1E39104B00BD488C /* XMPPContactHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = XMPPContactHub.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F677BF1F1E39104B00BD488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F677BF241E39104B00BD488C /* XMPPRosterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPRosterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F677BF241E39104B00BD488C /* XMPPContactHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPContactHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F677BF2B1E39104B00BD488C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPRoster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F677BF421E3910AA00BD488C /* XMPPRosterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPRosterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F677BF531E3911A600BD488C /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
+		F677BF3A1E3910AA00BD488C /* XMPPContactHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPContactHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F677BF421E3910AA00BD488C /* XMPPContactHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPContactHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F677BF531E3911A600BD488C /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Roster.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F677BF581E39149000BD488C /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
 		F677BF591E39149000BD488C /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/iOS/XMPPFoundation.framework; sourceTree = "<group>"; };
 		F677BF5D1E3914B300BD488C /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/Mac/PureXML.framework; sourceTree = "<group>"; };
 		F677BF5E1E3914B300BD488C /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/Mac/XMPPFoundation.framework; sourceTree = "<group>"; };
-		F677BF6D1E392D2A00BD488C /* FileRoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRoster.swift; sourceTree = "<group>"; };
-		F677BF701E392EF100BD488C /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
-		F677BF751E392F4A00BD488C /* FileRosterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRosterTests.swift; sourceTree = "<group>"; };
+		F677BF6D1E392D2A00BD488C /* FileRoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileRoster.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F677BF701E392EF100BD488C /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TestCase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F677BF751E392F4A00BD488C /* FileRosterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileRosterTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F677BF781E39325000BD488C /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		F677BF7B1E39326D00BD488C /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/Mac/SQLite.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,7 +114,7 @@
 			files = (
 				F677BF5A1E39149000BD488C /* PureXML.framework in Frameworks */,
 				F677BF5B1E39149000BD488C /* XMPPFoundation.framework in Frameworks */,
-				F677BF251E39104B00BD488C /* XMPPRoster.framework in Frameworks */,
+				F677BF251E39104B00BD488C /* XMPPContactHub.framework in Frameworks */,
 				F677BF7A1E39325F00BD488C /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +136,7 @@
 				F677BF7D1E39327400BD488C /* SQLite.framework in Frameworks */,
 				F677BF5F1E3914B300BD488C /* PureXML.framework in Frameworks */,
 				F677BF601E3914B300BD488C /* XMPPFoundation.framework in Frameworks */,
-				F677BF431E3910AA00BD488C /* XMPPRoster.framework in Frameworks */,
+				F677BF431E3910AA00BD488C /* XMPPContactHub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,11 +152,21 @@
 			name = "File Roster";
 			sourceTree = "<group>";
 		};
+		F61126BE1E3A2B4600A8E75F /* Roster */ = {
+			isa = PBXGroup;
+			children = (
+				F677BF531E3911A600BD488C /* Roster.swift */,
+				F61126B41E3A23BC00A8E75F /* RosterManager.swift */,
+				F61126B71E3A23F300A8E75F /* File Roster */,
+			);
+			name = Roster;
+			sourceTree = "<group>";
+		};
 		F677BF111E39104A00BD488C = {
 			isa = PBXGroup;
 			children = (
-				F677BF1D1E39104B00BD488C /* XMPPRoster */,
-				F677BF281E39104B00BD488C /* XMPPRosterTests */,
+				F677BF1D1E39104B00BD488C /* XMPPContactHub */,
+				F677BF281E39104B00BD488C /* XMPPContactHubTests */,
 				F677BF1C1E39104B00BD488C /* Products */,
 				F677BF571E39149000BD488C /* Frameworks */,
 			);
@@ -165,39 +175,37 @@
 		F677BF1C1E39104B00BD488C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F677BF1B1E39104B00BD488C /* XMPPRoster.framework */,
-				F677BF241E39104B00BD488C /* XMPPRosterTests.xctest */,
-				F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */,
-				F677BF421E3910AA00BD488C /* XMPPRosterTests.xctest */,
+				F677BF1B1E39104B00BD488C /* XMPPContactHub.framework */,
+				F677BF241E39104B00BD488C /* XMPPContactHubTests.xctest */,
+				F677BF3A1E3910AA00BD488C /* XMPPContactHub.framework */,
+				F677BF421E3910AA00BD488C /* XMPPContactHubTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F677BF1D1E39104B00BD488C /* XMPPRoster */ = {
+		F677BF1D1E39104B00BD488C /* XMPPContactHub */ = {
 			isa = PBXGroup;
 			children = (
-				F677BF531E3911A600BD488C /* Roster.swift */,
-				F61126B41E3A23BC00A8E75F /* RosterManager.swift */,
-				F61126B71E3A23F300A8E75F /* File Roster */,
+				F61126BE1E3A2B4600A8E75F /* Roster */,
 				F677BF561E39129200BD488C /* Supporting Files */,
 			);
-			path = XMPPRoster;
+			path = XMPPContactHub;
 			sourceTree = "<group>";
 		};
-		F677BF281E39104B00BD488C /* XMPPRosterTests */ = {
+		F677BF281E39104B00BD488C /* XMPPContactHubTests */ = {
 			isa = PBXGroup;
 			children = (
 				F677BF701E392EF100BD488C /* TestCase.swift */,
 				F677BF731E392F2A00BD488C /* File Roster */,
 				F677BF741E392F3500BD488C /* Supporting FIles */,
 			);
-			path = XMPPRosterTests;
+			path = XMPPContactHubTests;
 			sourceTree = "<group>";
 		};
 		F677BF561E39129200BD488C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F677BF1E1E39104B00BD488C /* XMPPRoster.h */,
+				F677BF1E1E39104B00BD488C /* XMPPContactHub.h */,
 				F677BF1F1E39104B00BD488C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -256,7 +264,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F677BF2C1E39104B00BD488C /* XMPPRoster.h in Headers */,
+				F677BF2C1E39104B00BD488C /* XMPPContactHub.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +272,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F677BF511E39112000BD488C /* XMPPRoster.h in Headers */,
+				F677BF511E39112000BD488C /* XMPPContactHub.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +294,7 @@
 			);
 			name = iOS;
 			productName = XMPPRoster;
-			productReference = F677BF1B1E39104B00BD488C /* XMPPRoster.framework */;
+			productReference = F677BF1B1E39104B00BD488C /* XMPPContactHub.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F677BF231E39104B00BD488C /* iOSTests */ = {
@@ -305,7 +313,7 @@
 			);
 			name = iOSTests;
 			productName = XMPPRosterTests;
-			productReference = F677BF241E39104B00BD488C /* XMPPRosterTests.xctest */;
+			productReference = F677BF241E39104B00BD488C /* XMPPContactHubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F677BF391E3910AA00BD488C /* macOS */ = {
@@ -323,7 +331,7 @@
 			);
 			name = macOS;
 			productName = XMPPRoster;
-			productReference = F677BF3A1E3910AA00BD488C /* XMPPRoster.framework */;
+			productReference = F677BF3A1E3910AA00BD488C /* XMPPContactHub.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F677BF411E3910AA00BD488C /* macOSTests */ = {
@@ -342,7 +350,7 @@
 			);
 			name = macOSTests;
 			productName = XMPPRosterTests;
-			productReference = F677BF421E3910AA00BD488C /* XMPPRosterTests.xctest */;
+			productReference = F677BF421E3910AA00BD488C /* XMPPContactHubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -379,7 +387,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F677BF151E39104A00BD488C /* Build configuration list for PBXProject "XMPPRoster" */;
+			buildConfigurationList = F677BF151E39104A00BD488C /* Build configuration list for PBXProject "XMPPContactHub" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -621,11 +629,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS/";
-				INFOPLIST_FILE = XMPPRoster/Info.plist;
+				INFOPLIST_FILE = XMPPContactHub/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRoster;
-				PRODUCT_NAME = XMPPRoster;
+				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPContactHub;
+				PRODUCT_NAME = XMPPContactHub;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -643,11 +651,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS/";
-				INFOPLIST_FILE = XMPPRoster/Info.plist;
+				INFOPLIST_FILE = XMPPContactHub/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRoster;
-				PRODUCT_NAME = XMPPRoster;
+				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPContactHub;
+				PRODUCT_NAME = XMPPContactHub;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -659,10 +667,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS/";
-				INFOPLIST_FILE = XMPPRosterTests/Info.plist;
+				INFOPLIST_FILE = XMPPContactHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRosterTests;
-				PRODUCT_NAME = XMPPRosterTests;
+				PRODUCT_NAME = XMPPContactHubTests;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -673,10 +681,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS/";
-				INFOPLIST_FILE = XMPPRosterTests/Info.plist;
+				INFOPLIST_FILE = XMPPContactHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRosterTests;
-				PRODUCT_NAME = XMPPRosterTests;
+				PRODUCT_NAME = XMPPContactHubTests;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -694,12 +702,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac/";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = XMPPRoster/Info.plist;
+				INFOPLIST_FILE = XMPPContactHub/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRoster;
-				PRODUCT_NAME = XMPPRoster;
+				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPContactHub;
+				PRODUCT_NAME = XMPPContactHub;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -720,12 +728,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac/";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = XMPPRoster/Info.plist;
+				INFOPLIST_FILE = XMPPContactHub/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRoster;
-				PRODUCT_NAME = XMPPRoster;
+				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPContactHub;
+				PRODUCT_NAME = XMPPContactHub;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -740,11 +748,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac/";
-				INFOPLIST_FILE = XMPPRosterTests/Info.plist;
+				INFOPLIST_FILE = XMPPContactHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRosterTests;
-				PRODUCT_NAME = XMPPRosterTests;
+				PRODUCT_NAME = XMPPContactHubTests;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 3.0;
 			};
@@ -758,11 +766,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac/";
-				INFOPLIST_FILE = XMPPRosterTests/Info.plist;
+				INFOPLIST_FILE = XMPPContactHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = org.internetslum.XMPPRosterTests;
-				PRODUCT_NAME = XMPPRosterTests;
+				PRODUCT_NAME = XMPPContactHubTests;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 3.0;
 			};
@@ -771,7 +779,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F677BF151E39104A00BD488C /* Build configuration list for PBXProject "XMPPRoster" */ = {
+		F677BF151E39104A00BD488C /* Build configuration list for PBXProject "XMPPContactHub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F677BF2D1E39104B00BD488C /* Debug */,
