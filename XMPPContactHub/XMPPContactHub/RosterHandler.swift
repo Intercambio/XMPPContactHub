@@ -146,8 +146,8 @@ class RosterRequest {
         queue.sync {
             let stanza = IQStanza(type: .get, from: roster.account, to: roster.account)
             let query = stanza.add(withName: "query", namespace: "jabber:iq:roster", content: nil)
-            if let versionedRoster = roster as? VersionedRoster, versionedRoster.version != nil {
-                query.setValue(versionedRoster.version, forAttribute: "ver")
+            if let versionedRoster = roster as? VersionedRoster {
+                query.setValue(versionedRoster.version ?? "", forAttribute: "ver")
             }
             dispatcher.handleIQRequest(stanza, timeout: 120.0) { stanza, error in
                 self.queue.async {
