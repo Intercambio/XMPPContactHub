@@ -12,7 +12,7 @@ import Foundation
 class TestCase: XCTestCase {
     
     var directory: URL?
-
+    
     override func setUp() {
         super.setUp()
         

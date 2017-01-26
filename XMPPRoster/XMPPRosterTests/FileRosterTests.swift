@@ -20,7 +20,7 @@ class FileRosterTests: TestCase {
         guard
             let directory = self.directory,
             let account = JID("romeo@example.com")
-            else { return }
+        else { return }
         
         let roster = FileRoster(directory: directory, account: account)
         
@@ -41,21 +41,23 @@ class FileRosterTests: TestCase {
     }
     
     // MARK: Tests
-
+    
     func testAddAndRemoveItem() {
         guard
             let roster = self.roster
-            else {
-                XCTFail();
-                return
+        else {
+            XCTFail()
+            return
         }
         do {
-            let item = Item(account: JID("romeo@example.com")!,
-                            counterpart: JID("juliet@example.com")!,
-                            subscription: .both,
-                            pending: .none,
-                            name: "Juliet",
-                            groups: ["Friends", "Lovers"])
+            let item = Item(
+                account: JID("romeo@example.com")!,
+                counterpart: JID("juliet@example.com")!,
+                subscription: .both,
+                pending: .none,
+                name: "Juliet",
+                groups: ["Friends", "Lovers"]
+            )
             try roster.add(item, version: nil)
             let items = try roster.items()
             XCTAssertTrue(items.contains(item))
@@ -76,29 +78,35 @@ class FileRosterTests: TestCase {
     func testReplace() {
         guard
             let roster = self.roster
-            else {
-                XCTFail();
-                return
+        else {
+            XCTFail()
+            return
         }
         do {
-            let itemA = Item(account: JID("romeo@example.com")!,
-                            counterpart: JID("a@example.com")!,
-                            subscription: .both,
-                            pending: .none,
-                            name: "A",
-                            groups: ["Friends"])
-            let itemB = Item(account: JID("romeo@example.com")!,
-                             counterpart: JID("b@example.com")!,
-                             subscription: .both,
-                             pending: .none,
-                             name: "B",
-                             groups: ["Friends"])
-            let itemC = Item(account: JID("romeo@example.com")!,
-                             counterpart: JID("b@example.com")!,
-                             subscription: .both,
-                             pending: .none,
-                             name: "B",
-                             groups: ["Friends", "Lovers"])
+            let itemA = Item(
+                account: JID("romeo@example.com")!,
+                counterpart: JID("a@example.com")!,
+                subscription: .both,
+                pending: .none,
+                name: "A",
+                groups: ["Friends"]
+            )
+            let itemB = Item(
+                account: JID("romeo@example.com")!,
+                counterpart: JID("b@example.com")!,
+                subscription: .both,
+                pending: .none,
+                name: "B",
+                groups: ["Friends"]
+            )
+            let itemC = Item(
+                account: JID("romeo@example.com")!,
+                counterpart: JID("b@example.com")!,
+                subscription: .both,
+                pending: .none,
+                name: "B",
+                groups: ["Friends", "Lovers"]
+            )
             
             try roster.add(itemA, version: nil)
             try roster.add(itemB, version: nil)
@@ -114,34 +122,40 @@ class FileRosterTests: TestCase {
     func testGroups() {
         guard
             let roster = self.roster
-            else {
-                XCTFail();
-                return
+        else {
+            XCTFail()
+            return
         }
         do {
-            let itemA = Item(account: JID("romeo@example.com")!,
-                             counterpart: JID("a@example.com")!,
-                             subscription: .both,
-                             pending: .none,
-                             name: "A",
-                             groups: ["Friends"])
-            let itemB = Item(account: JID("romeo@example.com")!,
-                             counterpart: JID("b@example.com")!,
-                             subscription: .both,
-                             pending: .none,
-                             name: "B",
-                             groups: ["Friends"])
-            let itemC = Item(account: JID("romeo@example.com")!,
-                             counterpart: JID("c@example.com")!,
-                             subscription: .both,
-                             pending: .none,
-                             name: "B",
-                             groups: ["Friends", "Lovers"])
+            let itemA = Item(
+                account: JID("romeo@example.com")!,
+                counterpart: JID("a@example.com")!,
+                subscription: .both,
+                pending: .none,
+                name: "A",
+                groups: ["Friends"]
+            )
+            let itemB = Item(
+                account: JID("romeo@example.com")!,
+                counterpart: JID("b@example.com")!,
+                subscription: .both,
+                pending: .none,
+                name: "B",
+                groups: ["Friends"]
+            )
+            let itemC = Item(
+                account: JID("romeo@example.com")!,
+                counterpart: JID("c@example.com")!,
+                subscription: .both,
+                pending: .none,
+                name: "B",
+                groups: ["Friends", "Lovers"]
+            )
             
             try roster.add(itemA, version: nil)
             try roster.add(itemB, version: nil)
             try roster.add(itemC, version: nil)
-
+            
             let groups = try roster.groups()
             XCTAssertEqual(groups.count, 2)
             XCTAssertTrue(groups.contains("Lovers"))
@@ -154,17 +168,19 @@ class FileRosterTests: TestCase {
     func testVersion() {
         guard
             let roster = self.roster
-            else {
-                XCTFail();
-                return
+        else {
+            XCTFail()
+            return
         }
         do {
-            let item = Item(account: JID("romeo@example.com")!,
-                             counterpart: JID("a@example.com")!,
-                             subscription: .both,
-                             pending: .none,
-                             name: "A",
-                             groups: ["Friends"])
+            let item = Item(
+                account: JID("romeo@example.com")!,
+                counterpart: JID("a@example.com")!,
+                subscription: .both,
+                pending: .none,
+                name: "A",
+                groups: ["Friends"]
+            )
             try roster.add(item, version: "1534761")
             XCTAssertEqual(roster.version, "1534761")
         } catch {

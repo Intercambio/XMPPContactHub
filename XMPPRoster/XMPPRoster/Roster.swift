@@ -17,16 +17,16 @@ public enum RosterError: Error {
 }
 
 public enum Subscription: String {
-    case none = "none"
-    case to = "to"
-    case from = "from"
-    case both = "both"
+    case none
+    case to
+    case from
+    case both
 }
 
 public enum Pending: String {
-    case none = "none"
-    case local = "locale"
-    case remove = "remote"
+    case none
+    case local
+    case remote
 }
 
 public struct Item: Hashable, Equatable {

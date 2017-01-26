@@ -56,23 +56,21 @@ public class FileRoster: VersionedRoster {
     // MARK: - Roster
     
     public var version: String? {
-        get {
-            return queue.sync {
-                guard
-                    let db = self.db
-                    else { return nil }
-                do {
-                    let query = FileRosterSchema.option
-                        .filter(FileRosterSchema.option_key == "version")
-                        .select(FileRosterSchema.option_value)
-                    if let row = try db.pluck(query) {
-                        return row[FileRosterSchema.option_value]
-                    } else {
-                        return nil
-                    }
-                } catch {
+        return queue.sync {
+            guard
+                let db = self.db
+            else { return nil }
+            do {
+                let query = FileRosterSchema.option
+                    .filter(FileRosterSchema.option_key == "version")
+                    .select(FileRosterSchema.option_value)
+                if let row = try db.pluck(query) {
+                    return row[FileRosterSchema.option_value]
+                } else {
                     return nil
                 }
+            } catch {
+                return nil
             }
         }
     }
@@ -82,20 +80,22 @@ public class FileRoster: VersionedRoster {
         try queue.sync {
             guard
                 let db = self.db
-                else { throw RosterError.notSetup }
+            else { throw RosterError.notSetup }
             
             guard
                 item.account == self.account
-                else { throw RosterError.invalidItem }
+            else { throw RosterError.invalidItem }
             
             try db.transaction {
                 _ = try db.run(
-                    FileRosterSchema.item.insert(or: .replace,
-                                                 FileRosterSchema.item_jid <- item.counterpart,
-                                                 FileRosterSchema.item_subscription <- item.subscription,
-                                                 FileRosterSchema.item_pending <- item.pending,
-                                                 FileRosterSchema.item_name <- item.name
-                ))
+                    FileRosterSchema.item.insert(
+                        or: .replace,
+                        FileRosterSchema.item_jid <- item.counterpart,
+                        FileRosterSchema.item_subscription <- item.subscription,
+                        FileRosterSchema.item_pending <- item.pending,
+                        FileRosterSchema.item_name <- item.name
+                    )
+                )
                 _ = try db.run(
                     FileRosterSchema.group.filter(FileRosterSchema.group_jid == item.counterpart).delete()
                 )
@@ -104,14 +104,17 @@ public class FileRoster: VersionedRoster {
                         FileRosterSchema.group.insert(
                             FileRosterSchema.group_jid <- item.counterpart,
                             FileRosterSchema.group_name <- name
-                    ))
+                        )
+                    )
                 }
                 
                 if let value = version {
                     _ = try db.run(
-                        FileRosterSchema.option.insert(or: .replace,
-                                                       FileRosterSchema.option_key <- "version",
-                                                       FileRosterSchema.option_value <- value)
+                        FileRosterSchema.option.insert(
+                            or: .replace,
+                            FileRosterSchema.option_key <- "version",
+                            FileRosterSchema.option_value <- value
+                        )
                     )
                 } else {
                     _ = try db.run(
@@ -128,7 +131,7 @@ public class FileRoster: VersionedRoster {
         try queue.sync {
             guard
                 let db = self.db
-                else { throw RosterError.notSetup }
+            else { throw RosterError.notSetup }
             
             try db.transaction {
                 _ = try db.run(
@@ -139,9 +142,11 @@ public class FileRoster: VersionedRoster {
                 )
                 if let value = version {
                     _ = try db.run(
-                        FileRosterSchema.option.insert(or: .replace,
-                                                       FileRosterSchema.option_key <- "version",
-                                                       FileRosterSchema.option_value <- value)
+                        FileRosterSchema.option.insert(
+                            or: .replace,
+                            FileRosterSchema.option_key <- "version",
+                            FileRosterSchema.option_value <- value
+                        )
                     )
                 } else {
                     _ = try db.run(
@@ -158,7 +163,7 @@ public class FileRoster: VersionedRoster {
         try queue.sync {
             guard
                 let db = self.db
-                else { throw RosterError.notSetup }
+            else { throw RosterError.notSetup }
             
             try db.transaction {
                 _ = try db.run(
@@ -171,28 +176,33 @@ public class FileRoster: VersionedRoster {
                 for item in items {
                     guard
                         item.account == self.account
-                        else { throw RosterError.invalidItem }
+                    else { throw RosterError.invalidItem }
                     
                     _ = try db.run(
-                        FileRosterSchema.item.insert(or: .replace,
-                                                     FileRosterSchema.item_jid <- item.counterpart,
-                                                     FileRosterSchema.item_subscription <- item.subscription,
-                                                     FileRosterSchema.item_pending <- item.pending,
-                                                     FileRosterSchema.item_name <- item.name
-                    ))
+                        FileRosterSchema.item.insert(
+                            or: .replace,
+                            FileRosterSchema.item_jid <- item.counterpart,
+                            FileRosterSchema.item_subscription <- item.subscription,
+                            FileRosterSchema.item_pending <- item.pending,
+                            FileRosterSchema.item_name <- item.name
+                        )
+                    )
                     for name in item.groups {
                         _ = try db.run(
                             FileRosterSchema.group.insert(
                                 FileRosterSchema.group_jid <- item.counterpart,
                                 FileRosterSchema.group_name <- name
-                        ))
+                            )
+                        )
                     }
                 }
                 if let value = version {
                     _ = try db.run(
-                        FileRosterSchema.option.insert(or: .replace,
-                                                       FileRosterSchema.option_key <- "version",
-                                                       FileRosterSchema.option_value <- value)
+                        FileRosterSchema.option.insert(
+                            or: .replace,
+                            FileRosterSchema.option_key <- "version",
+                            FileRosterSchema.option_value <- value
+                        )
                     )
                 } else {
                     _ = try db.run(
@@ -230,7 +240,7 @@ public class FileRoster: VersionedRoster {
         return try queue.sync {
             guard
                 let db = self.db
-                else { throw RosterError.notSetup }
+            else { throw RosterError.notSetup }
             
             var groups: [String] = []
             try db.transaction {
@@ -247,16 +257,17 @@ public class FileRoster: VersionedRoster {
     private func all() throws -> [Item] {
         guard
             let db = self.db
-            else { throw RosterError.notSetup }
+        else { throw RosterError.notSetup }
         
         var items: [Item] = []
         try db.transaction {
             
-            var groupsByCounterpart: [JID:[String]] = [:]
+            var groupsByCounterpart: [JID: [String]] = [:]
             
             let groupQuery = FileRosterSchema.group.select(
                 FileRosterSchema.group_jid,
-                FileRosterSchema.group_name)
+                FileRosterSchema.group_name
+            )
             
             for row in try db.prepare(groupQuery) {
                 let jid = row.get(FileRosterSchema.group_jid)
@@ -279,12 +290,14 @@ public class FileRoster: VersionedRoster {
                 let pending = row.get(FileRosterSchema.item_pending)
                 let name = row.get(FileRosterSchema.item_name)
                 let groups = groupsByCounterpart[counterpart] ?? []
-                let item = Item(account: self.account,
-                                counterpart: counterpart,
-                                subscription: subscription,
-                                pending: pending,
-                                name: name,
-                                groups: groups)
+                let item = Item(
+                    account: self.account,
+                    counterpart: counterpart,
+                    subscription: subscription,
+                    pending: pending,
+                    name: name,
+                    groups: groups
+                )
                 items.append(item)
             }
         }
