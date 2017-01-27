@@ -43,6 +43,19 @@ public struct Item: Hashable, Equatable {
     public static func ==(lhs: Item, rhs: Item) -> Bool {
         return rhs.account == lhs.account && rhs.counterpart == rhs.counterpart
     }
+    public init(account: JID,
+                counterpart: JID,
+                subscription: Subscription,
+                pending: Pending,
+                name: String?,
+                groups: [String]) {
+        self.account = account
+        self.counterpart = counterpart
+        self.subscription = subscription
+        self.pending = pending
+        self.name = name
+        self.groups = groups
+    }
 }
 
 public protocol Roster {
