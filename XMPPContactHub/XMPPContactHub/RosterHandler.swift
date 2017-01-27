@@ -179,6 +179,46 @@ class RosterHandler: NSObject, RosterManager, ConnectionHandler, IQHandler, Rost
         }
     }
     
+    func proxy(_ proxy: RosterHandlerProxy, subscribeTo jid: JID) {
+        queue.async {
+            let presence = PresenceStanza(from: proxy.roster.account, to: jid.bare())
+            presence.type = .subscribe
+            self.dispatcher.handlePresence(presence) { (error) in
+                NSLog("Failed to subscribe to '\(error)' (account: \(proxy.roster.account))")
+            }
+        }
+    }
+    
+    func proxy(_ proxy: RosterHandlerProxy, unsubscribeFrom jid: JID) {
+        queue.async {
+            let presence = PresenceStanza(from: proxy.roster.account, to: jid.bare())
+            presence.type = .unsubscribe
+            self.dispatcher.handlePresence(presence) { (error) in
+                NSLog("Failed to unsubscribe from '\(error)' (account: \(proxy.roster.account))")
+            }
+        }
+    }
+    
+    func proxy(_ proxy: RosterHandlerProxy, approveSubscriptionOf jid: JID) {
+        queue.async {
+            let presence = PresenceStanza(from: proxy.roster.account, to: jid.bare())
+            presence.type = .subscribed
+            self.dispatcher.handlePresence(presence) { (error) in
+                NSLog("Failed to approve subscription of '\(error)' (account: \(proxy.roster.account))")
+            }
+        }
+    }
+    
+    func proxy(_ proxy: RosterHandlerProxy, denySubscriptionOf jid: JID) {
+        queue.async {
+            let presence = PresenceStanza(from: proxy.roster.account, to: jid.bare())
+            presence.type = .unsubscribed
+            self.dispatcher.handlePresence(presence) { (error) in
+                NSLog("Failed to deny subscription of '\(error)' (account: \(proxy.roster.account))")
+            }
+        }
+    }
+    
     // MARK: - Update Roster
     
     private func update(_ roster: Roster, completion _: ((Error?) -> Void)?) {
@@ -268,6 +308,10 @@ class RosterHandler: NSObject, RosterManager, ConnectionHandler, IQHandler, Rost
 protocol RosterHandlerProxyDelegate: class {
     func proxy(_ proxy: RosterHandlerProxy, didAdd item: Item) -> Void
     func proxy(_ proxy: RosterHandlerProxy, didRemove item: Item) -> Void
+    func proxy(_ proxy: RosterHandlerProxy, subscribeTo jid: JID) -> Void
+    func proxy(_ proxy: RosterHandlerProxy, unsubscribeFrom jid: JID) -> Void
+    func proxy(_ proxy: RosterHandlerProxy, approveSubscriptionOf jid: JID) -> Void
+    func proxy(_ proxy: RosterHandlerProxy, denySubscriptionOf jid: JID) -> Void
 }
 
 class RosterHandlerProxy: Roster {
@@ -310,4 +354,9 @@ class RosterHandlerProxy: Roster {
     func items(pending: Pending) throws -> [Item] { return try roster.items(pending: pending) }
     
     func groups() throws -> [String] { return try roster.groups() }
+    
+    func subscribe(to jid: JID) { delegate?.proxy(self, subscribeTo: jid) }
+    func unsubscribe(from jid: JID) { delegate?.proxy(self, unsubscribeFrom: jid) }
+    func approveSubscription(of jid: JID) { delegate?.proxy(self, approveSubscriptionOf: jid) }
+    func denySubscription(of jid: JID) { delegate?.proxy(self, denySubscriptionOf: jid) }
 }

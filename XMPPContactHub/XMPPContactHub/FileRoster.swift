@@ -262,6 +262,11 @@ public class FileRoster: VersionedRoster {
         }
     }
     
+    public func subscribe(to jid: JID) {}
+    public func unsubscribe(from jid: JID) {}
+    public func approveSubscription(of jid: JID) {}
+    public func denySubscription(of jid: JID) {}
+    
     private func all() throws -> [Item] {
         guard
             let db = self.db

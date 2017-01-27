@@ -72,6 +72,11 @@ public protocol Roster {
     func items(pending: Pending) throws -> [Item]
     
     func groups() throws -> [String]
+    
+    func subscribe(to jid: JID) -> Void
+    func unsubscribe(from jid: JID) -> Void
+    func approveSubscription(of jid: JID) -> Void
+    func denySubscription(of jid: JID) -> Void
 }
 
 extension Notification.Name {
