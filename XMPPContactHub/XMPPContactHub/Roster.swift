@@ -21,6 +21,7 @@ public enum Subscription: String {
     case to
     case from
     case both
+    case remove
 }
 
 public enum Pending: String {

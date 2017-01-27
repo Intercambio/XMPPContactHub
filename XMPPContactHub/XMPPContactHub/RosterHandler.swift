@@ -10,7 +10,7 @@ import Foundation
 import XMPPFoundation
 import PureXML
 
-class RosterHandler: NSObject, ConnectionHandler {
+class RosterHandler: NSObject, ConnectionHandler, IQHandler {
     
     private let dispatcher: Dispatcher
     private let rosterManager: RosterManager
@@ -24,7 +24,7 @@ class RosterHandler: NSObject, ConnectionHandler {
             attributes: [.concurrent]
         )
         super.init()
-        dispatcher.add(self)
+        dispatcher.add(self, withIQQueryQNames: [PXQName(name: "query", namespace: "jabber:iq:roster")], features: nil)
     }
     
     deinit {
@@ -83,6 +83,59 @@ class RosterHandler: NSObject, ConnectionHandler {
     func didDisconnect(_ account: JID) {
         queue.async {
             self.removeRoster(for: account)
+        }
+    }
+    
+    // MARK: - IQHandler
+    
+    func handleIQRequest(_ stanza: IQStanza, timeout: TimeInterval, completion: ((IQStanza?, Error?) -> Swift.Void)? = nil) {
+        queue.async {
+            guard
+                let from = stanza.from,
+                let roster = self.roster(for: from.bare()),
+                stanza.type == .set
+                else {
+                    NSLog("Did recevie invalid stanza:\n\(stanza.document)")
+                    completion?(nil, NSError(domain: StanzaErrorDomain, code: StanzaErrorCode.forbidden.rawValue, userInfo: nil))
+                    return
+            }
+            let namespaces = ["r": "jabber:iq:roster"]
+            guard
+                let query = stanza.nodes(forXPath: "./r:query", usingNamespaces: namespaces).first as? PXElement
+                else {
+                    NSLog("Did recevie empty set request from '\(from)'")
+                    return
+            }
+            do {
+                let result = RosterResult(element: query, account: roster.account)
+                if let versinedRoster = roster as? VersionedRoster, result.version != nil {
+                    if versinedRoster.version != result.version {
+                        for item in result.items {
+                            switch item.subscription {
+                            case .remove:
+                                try versinedRoster.remove(item, version: result.version)
+                                NSLog("Did remove item '\(item.counterpart)' from roster '\(item.account)' (version: \(result.version))")
+                            default:
+                                try versinedRoster.add(item, version: result.version)
+                                NSLog("Did add/update item '\(item.counterpart)' to/in roster '\(item.account)' (version: \(result.version))")
+                            }
+                        }
+                    }
+                } else {
+                    for item in result.items {
+                        switch item.subscription {
+                        case .remove:
+                            try roster.remove(item)
+                            NSLog("Did remove item '\(item.counterpart)' from roster '\(item.account)'")
+                        default:
+                            try roster.add(item)
+                            NSLog("Did add/update item '\(item.counterpart)' to/in roster '\(item.account)'")
+                        }
+                    }
+                }
+            } catch {
+                NSLog("Failed to store roster update for account '\(roster.account)': \(error)")
+            }
         }
     }
     
