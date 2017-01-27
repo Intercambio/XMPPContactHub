@@ -216,8 +216,8 @@ class RosterHandler: NSObject, RosterManager, ConnectionHandler, IQHandler, Rost
                         } else {
                             NSLog("Roster for account '\(roster.account)' is up to date (version: \(result.version)).")
                         }
-                    } else {
-                        try roster.replace(with: result.items)
+                    } else if let replaceableRoster = roster as? ReplaceableRoster {
+                        try replaceableRoster.replace(with: result.items)
                         NSLog("Did update roster for account '\(roster.account)'")
                     }
                 } catch {
@@ -291,6 +291,7 @@ class RosterHandlerProxy: Roster {
         try roster.add(pendingItem)
         delegate?.proxy(self, didAdd: pendingItem)
     }
+    
     func remove(_ item: Item) throws {
         let pendingItem = Item(account: item.account,
                                counterpart: item.counterpart,
@@ -301,7 +302,6 @@ class RosterHandlerProxy: Roster {
         try roster.remove(pendingItem)
         delegate?.proxy(self, didRemove: pendingItem)
     }
-    func replace(with items: [Item]) throws { try roster.replace(with: items) }
     
     func items() throws -> [Item] { return try roster.items() }
     func items(in group: String) throws -> [Item] { return try roster.items(in: group) }

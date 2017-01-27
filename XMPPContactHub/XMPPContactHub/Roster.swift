@@ -51,7 +51,6 @@ public protocol Roster {
     
     func add(_ item: Item) throws -> Void
     func remove(_ item: Item) throws -> Void
-    func replace(with items: [Item]) throws -> Void
     
     func items() throws -> [Item]
     func items(in group: String) throws -> [Item]
@@ -60,14 +59,18 @@ public protocol Roster {
     func groups() throws -> [String]
 }
 
-public protocol VersionedRoster: Roster {
+extension Notification.Name {
+    public static let RosterDidChange = Notification.Name("XMPPContactHubDidChange")
+}
+
+protocol ReplaceableRoster: Roster {
+    func replace(with items: [Item]) throws -> Void
+}
+
+protocol VersionedRoster: ReplaceableRoster {
     func add(_ item: Item, version: String?) throws -> Void
     func remove(_ item: Item, version: String?) throws -> Void
     func replace(with items: [Item], version: String?) throws -> Void
     
     var version: String? { get }
-}
-
-extension Notification.Name {
-    public static let RosterDidChange = Notification.Name("XMPPContactHubDidChange")
 }
