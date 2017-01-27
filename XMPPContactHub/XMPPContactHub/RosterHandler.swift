@@ -10,19 +10,11 @@ import Foundation
 import XMPPFoundation
 import PureXML
 
-class RosterHandler: NSObject, ConnectionHandler, RosterRequestDelegate {
+class RosterHandler: NSObject, ConnectionHandler {
     
     private let dispatcher: Dispatcher
     private let rosterManager: RosterManager
     private let queue: DispatchQueue
-    
-    private var pendingRequests: [JID: PendingRequest] = [:]
-    
-    struct PendingRequest {
-        typealias CompletionHandler = (Error?) -> Void
-        var request: RosterRequest?
-        var completionHandler: [CompletionHandler]
-    }
     
     required init(dispatcher: Dispatcher, rosterManager: RosterManager) {
         self.dispatcher = dispatcher
@@ -39,153 +31,106 @@ class RosterHandler: NSObject, ConnectionHandler, RosterRequestDelegate {
         dispatcher.remove(self)
     }
     
-    func requestRoster(for account: JID, completion: ((Error?) -> Void)?) {
-        queue.async {
-            if var pendingRequest = self.pendingRequests[account] {
-                if let handler = completion {
-                    pendingRequest.completionHandler.append(handler)
-                    self.pendingRequests[account] = pendingRequest
-                }
-            } else {
-                var pendingRequest = PendingRequest(request: nil, completionHandler: [])
-                if let handler = completion {
-                    pendingRequest.completionHandler.append(handler)
-                }
-                self.pendingRequests[account] = pendingRequest
-                self.rosterManager.roster(for: account, create: true) { roster, error in
-                    self.queue.async {
-                        if let accountRoster = roster {
-                            if var pendingRequest = self.pendingRequests[account] {
-                                let request = RosterRequest(dispatcher: self.dispatcher, roster: accountRoster)
-                                request.delegate = self
-                                pendingRequest.request = request
-                                self.pendingRequests[account] = pendingRequest
-                                request.run()
-                            }
-                        } else {
-                            if let pendingRequest = self.pendingRequests[account] {
-                                let error = error ?? RosterRequestError.invalidResponse
-                                for handler in pendingRequest.completionHandler {
-                                    handler(error)
-                                }
-                            }
-                            self.pendingRequests[account] = nil
-                        }
-                    }
+    // MARK: - Manage Roster
+    
+    private var rosters: [JID:Roster] = [:]
+    
+    private func addRoster(for account: JID, completion: ((Roster?, Error?)->Void)?) {
+        if let roster = rosters[account] {
+            completion?(roster, nil)
+        } else {
+            rosterManager.roster(for: account, create: true) { (roster, error) in
+                self.queue.async {
+                    completion?(roster, error)
                 }
             }
         }
+    }
+    
+    private func removeRoster(for account: JID) {
+        rosters[account] = nil
+    }
+    
+    private func roster(for account: JID) -> Roster? {
+        return rosters[account]
     }
     
     // MARK: - ConnectionHandler
     
-    func didConnect(_ JID: JID, resumed: Bool, features _: [Feature]?) {
-        if resumed == false {
-            requestRoster(for: JID, completion: nil)
-        }
-    }
-    
-    func didDisconnect(_: JID) {
-    }
-    
-    // MARK: - RosterRequestDelegate
-    
-    func rosterRequest(_ request: RosterRequest, didFailWith error: Error?) {
+    func didConnect(_ account: JID, resumed: Bool, features _: [Feature]?) {
+        guard
+            resumed == false
+            else { return }
+        
         queue.async {
-            let account = request.roster.account
-            if let pendingRequest = self.pendingRequests[account] {
-                for handler in pendingRequest.completionHandler {
-                    handler(error ?? RosterRequestError.invalidResponse)
+            self.addRoster(for: account) { (roster, error) in
+                guard
+                    let roster = roster
+                    else {
+                    NSLog("Failed to add roster for account '\(account)': \(error)")
+                    return
                 }
-            }
-            self.pendingRequests[account] = nil
-        }
-    }
-    
-    func rosterRequestDidSuccess(_ request: RosterRequest) {
-        queue.async {
-            let account = request.roster.account
-            if let pendingRequest = self.pendingRequests[account] {
-                for handler in pendingRequest.completionHandler {
-                    handler(nil)
-                }
-            }
-            self.pendingRequests[account] = nil
-        }
-    }
-}
-
-protocol RosterRequestDelegate: class {
-    func rosterRequest(_ request: RosterRequest, didFailWith error: Error?) -> Void
-    func rosterRequestDidSuccess(_ request: RosterRequest) -> Void
-}
-
-enum RosterRequestError: Error {
-    case alreadyRunning
-    case invalidResponse
-}
-
-class RosterRequest {
-    
-    weak var delegate: RosterRequestDelegate?
-    let dispatcher: Dispatcher
-    let roster: Roster
-    
-    private let queue: DispatchQueue
-    
-    required init(dispatcher: Dispatcher, roster: Roster) {
-        self.dispatcher = dispatcher
-        self.roster = roster
-        self.queue = DispatchQueue(
-            label: "RosterRequest",
-            attributes: [.concurrent]
-        )
-    }
-    
-    func run() {
-        queue.sync {
-            let stanza = IQStanza(type: .get, from: roster.account, to: roster.account)
-            let query = stanza.add(withName: "query", namespace: "jabber:iq:roster", content: nil)
-            if let versionedRoster = roster as? VersionedRoster {
-                query.setValue(versionedRoster.version ?? "", forAttribute: "ver")
-            }
-            dispatcher.handleIQRequest(stanza, timeout: 120.0) { stanza, error in
-                self.queue.async {
-                    if let response = stanza {
-                        self.handleResultResponse(stanza: response)
-                    } else {
-                        self.handleErrorResponse(error: error ?? RosterRequestError.invalidResponse)
+                
+                self.update(roster) { error in
+                    if error != nil {
+                        NSLog("Failed to update roster for account '\(account)': \(error)")
                     }
                 }
             }
         }
     }
     
-    private func handleErrorResponse(error: Error) {
-        self.delegate?.rosterRequest(self, didFailWith: error)
+    func didDisconnect(_ account: JID) {
+        queue.async {
+            self.removeRoster(for: account)
+        }
     }
     
-    private func handleResultResponse(stanza: IQStanza) {
-        let namespaces = ["r": "jabber:iq:roster"]
-        guard
-            let query = stanza.nodes(forXPath: "./r:query", usingNamespaces: namespaces).first as? PXElement
-        else {
-            self.delegate?.rosterRequestDidSuccess(self)
-            return
+    // MARK: - Update Roster
+    
+    private func update(_ roster: Roster, completion: ((Error?)->Void)?)  {
+        let stanza = IQStanza(type: .get, from: roster.account, to: roster.account)
+        let query = stanza.add(withName: "query", namespace: "jabber:iq:roster", content: nil)
+        if let versionedRoster = roster as? VersionedRoster {
+            query.setValue(versionedRoster.version ?? "", forAttribute: "ver")
+            NSLog("Requesting roster for account '\(roster.account)' (version: \(versionedRoster.version))")
+        } else {
+            NSLog("Requesting roster for account '\(roster.account)'")
         }
-        
-        do {
-            let result = RosterResult(element: query, account: roster.account)
-            if let versinedRoster = roster as? VersionedRoster, result.version != nil {
-                if versinedRoster.version != result.version {
-                    try versinedRoster.replace(with: result.items, version: result.version)
+        dispatcher.handleIQRequest(stanza, timeout: 120.0) { stanza, error in
+            self.queue.async {
+                guard
+                    let stanza = stanza
+                    else {
+                        NSLog("Failed to request the roster for account '\(roster.account)': \(error)")
+                        return
                 }
-            } else {
-                try roster.replace(with: result.items)
+                
+                let namespaces = ["r": "jabber:iq:roster"]
+                guard
+                    let query = stanza.nodes(forXPath: "./r:query", usingNamespaces: namespaces).first as? PXElement
+                    else {
+                        NSLog("Did recevie empty response for roster request for account '\(roster.account)'")
+                        return
+                }
+                
+                do {
+                    let result = RosterResult(element: query, account: roster.account)
+                    if let versinedRoster = roster as? VersionedRoster, result.version != nil {
+                        if versinedRoster.version != result.version {
+                            try versinedRoster.replace(with: result.items, version: result.version)
+                            NSLog("Did update roster for account '\(roster.account)' (version: \(result.version))")
+                        } else {
+                            NSLog("Roster for account '\(roster.account)' is up to date (version: \(result.version)).")
+                        }
+                    } else {
+                        try roster.replace(with: result.items)
+                        NSLog("Did update roster for account '\(roster.account)'")
+                    }
+                } catch {
+                    NSLog("Failed to store roster update for account '\(roster.account)': \(error)")
+                }
             }
-            self.delegate?.rosterRequestDidSuccess(self)
-        } catch {
-            self.handleErrorResponse(error: error)
         }
     }
 }
