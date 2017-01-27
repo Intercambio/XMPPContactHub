@@ -214,6 +214,14 @@ public class FileRoster: VersionedRoster {
         }
     }
     
+    public func item(for jid: JID) throws -> Item? {
+        return try queue.sync {
+            return try self.all().first(where: { (item) -> Bool in
+                return item.counterpart == jid
+            })
+        }
+    }
+    
     public func items() throws -> [Item] {
         return try queue.sync {
             return try self.all()

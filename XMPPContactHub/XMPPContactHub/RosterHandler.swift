@@ -303,6 +303,8 @@ class RosterHandlerProxy: Roster {
         delegate?.proxy(self, didRemove: pendingItem)
     }
     
+    func item(for jid: JID) throws -> Item? { return try roster.item(for: jid) }
+    
     func items() throws -> [Item] { return try roster.items() }
     func items(in group: String) throws -> [Item] { return try roster.items(in: group) }
     func items(pending: Pending) throws -> [Item] { return try roster.items(pending: pending) }

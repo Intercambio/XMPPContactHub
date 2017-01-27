@@ -52,6 +52,8 @@ public protocol Roster {
     func add(_ item: Item) throws -> Void
     func remove(_ item: Item) throws -> Void
     
+    func item(for jid: JID) throws -> Item?
+    
     func items() throws -> [Item]
     func items(in group: String) throws -> [Item]
     func items(pending: Pending) throws -> [Item]
