@@ -17,4 +17,7 @@
         ask='subscribe'>
         <group>Friends</group>
     </item>
+    <item ask="subscribe" jid="tobias@intercambio.im">
+        <group>Buddys</group>
+    </item>
 </query>

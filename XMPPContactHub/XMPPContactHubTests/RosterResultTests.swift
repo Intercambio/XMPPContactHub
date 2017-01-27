@@ -22,6 +22,6 @@ class RosterResultTests: TestCase {
         let result = RosterResult(element: document.root, account: account)
         
         XCTAssertEqual(result.version, "ver7")
-        XCTAssertEqual(result.items.count, 3)
+        XCTAssertEqual(result.items.count, 4)
     }
 }

@@ -29,12 +29,14 @@ struct RosterResult {
             if element.qualifiedName == PXQName(name: "item", namespace: "jabber:iq:roster") {
                 guard
                     let jidString = element.value(forAttribute: "jid") as? String,
-                    let jid = JID(jidString),
-                    let subscriptionString = element.value(forAttribute: "subscription") as? String,
-                    let subscription = Subscription(rawValue: subscriptionString)
+                    let jid = JID(jidString)
                 else {
                     return
                 }
+                
+                let subscriptionString = element.value(forAttribute: "subscription") as? String ?? ""
+                let subscription = Subscription(rawValue: subscriptionString) ?? .none
+                
                 let name = element.value(forAttribute: "name") as? String
                 let pending: Pending = element.value(forAttribute: "ask") as? String == "subscribe" ? .remote : .none
                 var groups: [String] = []
