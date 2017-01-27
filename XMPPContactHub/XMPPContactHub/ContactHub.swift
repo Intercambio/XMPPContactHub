@@ -28,10 +28,10 @@ public class ContactHub: NSObject, RosterManager {
     // MARK: - RosterManager
     
     public func roster(for account: JID, create: Bool, completion: @escaping (Roster?, Error?) -> Void) {
-        rosterManager.roster(for: account, create: create, completion: completion)
+        rosterHandler.roster(for: account, create: create, completion: completion)
     }
     
     public func deleteRoster(for account: JID, completion: @escaping ((Error?) -> Void)) {
-        deleteRoster(for: account, completion: completion)
+        rosterHandler.deleteRoster(for: account, completion: completion)
     }
 }
