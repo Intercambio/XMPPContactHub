@@ -1,0 +1,3 @@
+github "Internetslum/PureXML" ~> 1.1.3
+github "Internetslum/XMPPFoundation" ~> 1.1
+github "stephencelis/SQLite.swift" ~> 0.11.0

@@ -1,0 +1,6 @@
+#!/bin/bash
+git status --porcelain | grep -e '^[AM]\(.*\).swift$' | cut -c 3- | while read line; do
+  swiftformat --indent 4 --allman false --wraparguments beforefirst --removelines disabled --wrapelements beforefirst --header ignore --insertlines disabled --empty void --ranges nospace --trimwhitespace nonblank-lines --linebreaks lf --commas inline --comments indent --ifdef indent --hexliterals uppercase --semicolons inline ${line};
+  git add $line;
+done
+
