@@ -41,6 +41,7 @@ class RosterHandler: NSObject, ConnectionHandler, IQHandler {
         } else {
             rosterManager.roster(for: account, create: true) { (roster, error) in
                 self.queue.async {
+                    self.rosters[account] = roster
                     completion?(roster, error)
                 }
             }
