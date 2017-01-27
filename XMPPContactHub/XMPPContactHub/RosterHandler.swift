@@ -105,6 +105,7 @@ class RosterHandler: NSObject, ConnectionHandler, IQHandler {
                 let query = stanza.nodes(forXPath: "./r:query", usingNamespaces: namespaces).first as? PXElement
                 else {
                     NSLog("Did recevie empty set request from '\(from)'")
+                    completion?(stanza.makeResponse(), nil)
                     return
             }
             do {
@@ -137,6 +138,7 @@ class RosterHandler: NSObject, ConnectionHandler, IQHandler {
             } catch {
                 NSLog("Failed to store roster update for account '\(roster.account)': \(error)")
             }
+            completion?(stanza.makeResponse(), nil)
         }
     }
     
