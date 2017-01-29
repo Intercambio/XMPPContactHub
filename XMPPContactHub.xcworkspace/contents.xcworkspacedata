@@ -5,6 +5,12 @@
       location = "group:Cartfile">
    </FileRef>
    <FileRef
+      location = "group:Cartfile.resolved">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
       location = "group:XMPPContactHub/XMPPContactHub.xcodeproj">
    </FileRef>
 </Workspace>
