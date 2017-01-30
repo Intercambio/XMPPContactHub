@@ -86,21 +86,21 @@ class RosterHandler: NSObject, RosterManager, ConnectionHandler, IQHandler, Rost
     
     // MARK: - RosterManager
     
-    func roster(for account: JID, create _: Bool, completion: @escaping (Roster?, Error?) -> Void) {
+    func roster(for account: JID, create _: Bool, completion: ((Roster?, Error?) -> Void)?) {
         queue.async {
             self.addRoster(for: account) { roster, error in
                 if let roster = roster {
                     let proxy = RosterHandlerProxy(roster: roster)
                     proxy.delegate = self
-                    completion(proxy, error)
+                    completion?(proxy, error)
                 } else {
-                    completion(nil, error)
+                    completion?(nil, error)
                 }
             }
         }
     }
     
-    func deleteRoster(for account: JID, completion: @escaping ((Error?) -> Void)) {
+    func deleteRoster(for account: JID, completion: ((Error?) -> Void)?) {
         queue.async {
             self.removeRoster(for: account)
             self.rosterManager.deleteRoster(for: account, completion: completion)

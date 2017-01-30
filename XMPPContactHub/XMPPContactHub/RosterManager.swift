@@ -43,6 +43,6 @@ public enum RosterManagerError: Error {
 }
 
 public protocol RosterManager: class {
-    func roster(for account: JID, create: Bool, completion: @escaping (Roster?, Error?) -> Void) -> Void
-    func deleteRoster(for account: JID, completion: @escaping ((Error?) -> Void)) -> Void
+    func roster(for account: JID, create: Bool, completion: ((Roster?, Error?) -> Void)?) -> Void
+    func deleteRoster(for account: JID, completion: ((Error?) -> Void)?) -> Void
 }

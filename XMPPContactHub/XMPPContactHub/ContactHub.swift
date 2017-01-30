@@ -37,7 +37,7 @@
 import Foundation
 import XMPPFoundation
 
-public class ContactHub: NSObject, RosterManager {
+public class ContactHub: NSObject {
     
     private let queue: DispatchQueue
     private let dispatcher: Dispatcher
@@ -53,13 +53,11 @@ public class ContactHub: NSObject, RosterManager {
         queue = DispatchQueue(label: "Contact Hub", attributes: [.concurrent])
     }
     
-    // MARK: - RosterManager
-    
-    public func roster(for account: JID, create: Bool, completion: @escaping (Roster?, Error?) -> Void) {
-        rosterHandler.roster(for: account, create: create, completion: completion)
+    public func roster(for account: JID, completion: ((Roster?, Error?) -> Void)?) {
+        rosterHandler.roster(for: account, create: true, completion: completion)
     }
     
-    public func deleteRoster(for account: JID, completion: @escaping ((Error?) -> Void)) {
+    public func deleteResources(for account: JID, completion: ((Error?) -> Void)?) {
         rosterHandler.deleteRoster(for: account, completion: completion)
     }
 }
