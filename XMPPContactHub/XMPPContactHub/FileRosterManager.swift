@@ -62,26 +62,28 @@ public class FileRosterManager: RosterManager {
     
     // MARK: - RosterManager
     
-    public func roster(for account: JID, create: Bool, completion: @escaping (Roster?, Error?) -> Void) {
+    public func roster(for account: JID, create: Bool, completion: ((Roster?, Error?) -> Void)?) {
         queue.async {
             do {
                 if let roster = self.rosterByAccount[account] {
-                    completion(roster, nil)
+                    completion?(roster, nil)
                 } else if var pendingRoster = self.pendingRosterByAccount[account] {
-                    pendingRoster.handler.append(completion)
+                    if let completion = completion {
+                        pendingRoster.handler.append(completion)
+                    }
                 } else {
                     let roster = try self.openRoster(for: account, create: create)
-                    let pendingRoster = PendingRoster(archvie: roster, handler: [completion])
+                    let pendingRoster = PendingRoster(archvie: roster, handler: completion == nil ? [] : [completion!])
                     self.pendingRosterByAccount[account] = pendingRoster
                     self.open(roster)
                 }
             } catch {
-                completion(nil, error)
+                completion?(nil, error)
             }
         }
     }
     
-    public func deleteRoster(for account: JID, completion: @escaping ((Error?) -> Void)) {
+    public func deleteRoster(for account: JID, completion: ((Error?) -> Void)?) {
         queue.async {
             do {
                 if let roster = self.rosterByAccount[account] {
@@ -94,9 +96,9 @@ public class FileRosterManager: RosterManager {
                     }
                 }
                 try self.deleteRoster(for: account)
-                completion(nil)
+                completion?(nil)
             } catch {
-                completion(error)
+                completion?(error)
             }
         }
     }
