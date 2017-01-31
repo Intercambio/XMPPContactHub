@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import XMPPFoundation
 
@@ -66,17 +65,19 @@ public struct Item: Hashable, Equatable {
     public let name: String?
     public let groups: [String]
     public var hashValue: Int {
-        return account.hash + counterpart.hash
+        return account.hashValue ^ counterpart.hashValue
     }
     public static func ==(lhs: Item, rhs: Item) -> Bool {
-        return rhs.account == lhs.account && rhs.counterpart == rhs.counterpart
+        return lhs.account == rhs.account && lhs.counterpart == rhs.counterpart
     }
-    public init(account: JID,
-                counterpart: JID,
-                subscription: Subscription,
-                pending: Pending,
-                name: String?,
-                groups: [String]) {
+    public init(
+        account: JID,
+        counterpart: JID,
+        subscription: Subscription,
+        pending: Pending,
+        name: String?,
+        groups: [String]
+    ) {
         self.account = account
         self.counterpart = counterpart
         self.subscription = subscription
